@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css?family=Emilys%20Candy:700|Emilys%20Candy:400');
+
+@function hsl($h, $s, $l) {
+	@return unquote('#{$h} #{$s} #{$l}');
+}
+
+@mixin color-values($name, $h, $s, $l) {
+	--color-values-#{$name}: #{hsl($h, $s, $l)};
+}
+
+:root {
+	--color-surface-700: hsl(40, 4%, 86%);
+	@include color-values(surface-700, 40, 4%, 86%);
+	--color-surface-800: hsl(34, 6%, 76%);
+	@include color-values(surface-800, 34, 6%, 76%);
+	--color-surface-900: hsl(38, 16%, 24%);
+	@include color-values(surface-900, 38, 16%, 24%);
+	--color-surface-950: hsl(46, 100%, 3%);
+	@include color-values(surface-950, 46, 100%, 3%);
+
+	--color-primary-500: hsl(17, 83%, 46%);
+	@include color-values(primary-500, 17, 83%, 46%);
+	--color-primary-700: hsl(25, 85%, 17%);
+	@include color-values(primary-700, 25, 85%, 8%);
+
+	@media (prefers-color-scheme: light) {
+		--color-surface-700: hsl(40, 4%, 14%);
+		@include color-values(surface-700, 40, 4%, 14%);
+		--color-surface-800: hsl(34, 6%, 24%);
+		@include color-values(surface-800, 34, 6%, 24%);
+		--color-surface-900: hsl(38, 16%, 76%);
+		@include color-values(surface-900, 38, 16%, 76%);
+		--color-surface-950: hsl(46, 100%, 97%);
+		@include color-values(surface-950, 46, 100%, 97%);
+
+		--color-primary-500: hsl(17, 83%, 54%);
+		@include color-values(primary-500, 17, 83%, 54%);
+		--color-primary-700: hsl(26, 94%, 83%);
+		@include color-values(primary-700, 26, 94%, 93%);
+	}
+}
+
+:where(html) {
+	font-size: 100%;
+	line-height: 1;
+	-webkit-text-size-adjust: 100%;
+	color-scheme: dark light;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+}
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 300 to 800
+// <bounce>: Use a value from -100 to 100
+// <informality>: Use a value from 0 to 100
+// <spacing>: Use a value from 0 to 100
+:where(body) {
+	font-style: normal;
+	line-height: inherit;
+	font-optical-sizing: auto;
+	font-variation-settings:
+		'BNCE' 0,
+		'INFM' 0,
+		'SPAC' 0;
+}
+
+input,
+input:matches([type='password'], [type='search']) {
+	-webkit-appearance: textfield;
+	background-color: -apple-system-control-background;
+	color: text;
+}
