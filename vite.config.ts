@@ -2,17 +2,17 @@
  * This is the base config for vite.
  * When building, the adapter config is used which loads this file and extends it.
  */
-import { defineConfig, type UserConfig } from "vite";
-import { qwikVite } from "@builder.io/qwik/optimizer";
-import { qwikCity } from "@builder.io/qwik-city/vite";
-import tsconfigPaths from "vite-tsconfig-paths";
-import pkg from "./package.json";
+import { defineConfig, type UserConfig } from 'vite'
+import { qwikVite } from '@builder.io/qwik/optimizer'
+import { qwikCity } from '@builder.io/qwik-city/vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
+import pkg from './package.json'
 
 const { dependencies = {}, devDependencies = {} } = pkg as any as {
-  dependencies: Record<string, string>;
-  devDependencies: Record<string, string>;
-  [key: string]: unknown;
-};
+  dependencies: Record<string, string>
+  devDependencies: Record<string, string>
+  [key: string]: unknown
+}
 
 /**
  * Note that Vite normally starts from `index.html` but the qwikCity plugin makes start at `src/entry.ssr.tsx` instead.
@@ -28,7 +28,7 @@ export default defineConfig(({ command, mode }): UserConfig => {
     },
     // This tells Vite how to bundle the server code.
     ssr:
-      command === "build" && mode === "production"
+      command === 'build' && mode === 'production'
         ? {
             // All dev dependencies should be bundled in the server build
             noExternal: Object.keys(devDependencies),
@@ -43,14 +43,14 @@ export default defineConfig(({ command, mode }): UserConfig => {
     server: {
       headers: {
         // Don't cache the server response in dev mode
-        "Cache-Control": "public, max-age=0",
+        'Cache-Control': 'public, max-age=0',
       },
     },
     preview: {
       headers: {
         // Do cache the server response in preview (non-adapter production build)
-        "Cache-Control": "public, max-age=600",
+        'Cache-Control': 'public, max-age=600',
       },
     },
-  };
-});
+  }
+})
