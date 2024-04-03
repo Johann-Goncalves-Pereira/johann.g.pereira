@@ -3,7 +3,7 @@ import { useServerTimeLoader } from '../../../routes/layout'
 
 export default component$(() => {
 	return (
-		<footer class='col-start-2 pb-24 text-sm'>
+		<footer class='pb-24 text-sm lg:col-start-2'>
 			<p>
 				Loosely designed in Figma and coded in Visual Studio Code by yours
 				truly. Built with Next.js and Tailwind CSS, deployed with Vercel. All

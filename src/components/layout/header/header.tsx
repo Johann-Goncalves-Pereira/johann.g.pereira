@@ -22,7 +22,7 @@ export default component$(() => {
 	)
 
 	return (
-		<header class='pointer-events-none sticky top-0 z-10 mx-auto flex h-full w-1/2 max-w-screen-sm -translate-x-1/2 flex-col place-content-center justify-between py-24 pl-24 pr-2'>
+		<header class='pointer-events-none flex h-full w-auto flex-col place-content-center justify-between gap-y-24 px-4 pr-2 pt-24 md:px-10 lg:sticky lg:top-0 lg:z-10 lg:mx-auto lg:w-1/2 lg:max-w-screen-sm lg:-translate-x-1/2 lg:pb-32 lg:pl-24 lg:pr-0 lg:pt-32'>
 			<div class='pointer-events-auto grid gap-24'>
 				<div>
 					<h1 class='text-5xl font-bold'>Johann Pereira</h1>
@@ -34,7 +34,7 @@ export default component$(() => {
 					</h3>
 				</div>
 
-				<nav class='pointer-events-auto grid gap-y-4 uppercase'>
+				<nav class='pointer-events-auto grid gap-y-4 font-medium uppercase'>
 					{['about', 'experience', 'projects'].map(title => (
 						<a
 							class={twMerge(
