@@ -1,41 +1,44 @@
 import {
 	component$,
 	useSignal,
-	useStore,
+	$,
+	useOnDocument,
 	useVisibleTask$,
 } from '@builder.io/qwik'
-import styles from './header.module.css'
+import { JSX } from '@builder.io/qwik/jsx-runtime'
 import { twMerge } from 'tailwind-merge'
 
 export default component$(() => {
 	const currentSection = useSignal('')
 
-	// eslint-disable-next-line qwik/no-use-visible-task
-	useVisibleTask$(({ track }) => {
-		track(() => currentSection.value)
-		const href = window.location.href
-		const id = href.match(/#(\w+)/)?.[1] || ''
-		currentSection.value = id
-	})
+	useOnDocument(
+		'qinit',
+		$(() => {
+			document.getElementById(currentSection.value)?.scrollIntoView()
+			const href = window.location.href
+			const id = href.match(/#(\w+)/)?.[1] || ''
+			currentSection.value = id
+		}),
+	)
 
 	return (
-		<header class='fixed left-0 flex h-full w-1/2 flex-col place-content-center justify-between py-24 pl-24 pr-2'>
-			<div class='grid gap-24'>
+		<header class='pointer-events-none sticky top-0 z-10 mx-auto flex h-full w-1/2 max-w-screen-sm -translate-x-1/2 flex-col place-content-center justify-between py-24 pl-24 pr-2'>
+			<div class='pointer-events-auto grid gap-24'>
 				<div>
 					<h1 class='text-5xl font-bold'>Johann Pereira</h1>
 					<h2 class='mt-3 text-2xl font-normal'>Senior Frontend Engineer</h2>
-					<p class='mt-4'>
+					<h3 class='mt-4'>
 						I build pixel-perfect, engaging,
 						<br />
 						and accessible digital experiences.
-					</p>
+					</h3>
 				</div>
 
-				<nav class='grid uppercase'>
+				<nav class='pointer-events-auto grid gap-y-4 uppercase'>
 					{['about', 'experience', 'projects'].map(title => (
 						<a
 							class={twMerge(
-								'flex items-center gap-4 opacity-60 hover:opacity-100 focus-visible:opacity-100 [&>span]:hover:w-16 [&>span]:focus-visible:w-16 ',
+								'flex items-center gap-4 opacity-75 hover:opacity-100 focus-visible:opacity-100 [&>span]:hover:w-16 [&>span]:focus-visible:w-16 ',
 								`${currentSection.value === title && 'opacity-100 [&>span]:w-16'}`,
 							)}
 							href={`#${title}`}
@@ -48,11 +51,11 @@ export default component$(() => {
 					))}
 				</nav>
 			</div>
-			<nav class='mt-auto flex gap-4'>
+			<nav class='pointer-events-auto mt-auto flex gap-4'>
 				{socials.map(social => {
 					return (
 						<a
-							class='block hover:text-opacity-0'
+							class='block opacity-75 transition-opacity hover:opacity-100 focus-visible:opacity-100'
 							href={social.href}
 							target='_blank'
 							rel='noreferrer noopener'
@@ -70,7 +73,13 @@ export default component$(() => {
 	)
 })
 
-const socials = [
+interface SocialProps {
+	title: string
+	href: string
+	icon: JSX.Element
+}
+
+const socials: SocialProps[] = [
 	{
 		title: 'GitHub',
 		href: 'https://github.com/brittanychiang',
