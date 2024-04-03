@@ -11,8 +11,8 @@ export default component$(() => {
 		<>
 			<Header />
 
-			<div class='absolute left-0 right-0 top-0 m-auto grid h-full w-full max-w-screen-xl grid-cols-2 gap-4 px-24'>
-				<main class='col-start-2 grid gap-y-24 py-32'>
+			<div class='m-auto grid h-full w-full max-w-screen-xl gap-4 px-4 md:px-10 lg:absolute lg:left-0 lg:right-0 lg:top-0 lg:grid-cols-2 lg:px-16'>
+				<main class='grid gap-y-24 py-32 lg:col-start-2'>
 					<div>
 						<About />
 						<Experience />

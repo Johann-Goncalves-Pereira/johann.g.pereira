@@ -70,7 +70,7 @@ export default component$(() => {
 	return (
 		<>
 			<div
-				class='relative z-10 h-full w-full overflow-y-auto scroll-smooth rounded-lg border-2 border-surface-900 border-opacity-50 backdrop-blur-[6rem] scrollbar-none scrollbar-thumb-primary-700 [&~:not(.pointer-events-none)]:hidden'
+				class='relative z-10 grid h-full w-full overflow-y-auto scroll-smooth rounded-lg border-2 border-surface-900 border-opacity-50 backdrop-blur-[6rem] scrollbar-none scrollbar-thumb-primary-700 [&~:not(.pointer-events-none)]:hidden'
 				onMouseMove$={({ x, y }) => {
 					if (reduce.value) return
 					const wx = x - size.w * 0.575
@@ -83,7 +83,7 @@ export default component$(() => {
 			</div>
 			<div
 				ref={ballRef}
-				class='pointer-events-none absolute left-2 top-2 z-[9] h-64 w-64 rounded-full bg-primary-500 opacity-50'
+				class='pointer-events-none absolute left-2 top-2 z-[9] h-64 w-64 transform-gpu rounded-full bg-primary-500 opacity-50 will-change-transform'
 				style={ballStyle(pos.x, pos.y, size.w, size.h)}
 				aria-hidden
 			/>
