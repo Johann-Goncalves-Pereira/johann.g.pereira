@@ -3,10 +3,10 @@ import Arrow from '../Svg/arrow'
 
 export default component$(() => {
 	return (
-		<aside class='mt-40' id='projects'>
+		<aside class='mt-24' id='projects'>
 			<nav>
-				{projects.map(({ title, time }, index) => (
-					<Link title={title} time={time} key={index} />
+				{projects.map(({ title, time, url }, index) => (
+					<Link title={title} time={time} url={url} key={index} />
 				))}
 			</nav>
 		</aside>
@@ -16,21 +16,22 @@ export default component$(() => {
 interface ProjectProps {
 	title: string
 	time: string
+	url: string
 }
 
-export const Link = component$(({ title, time }: ProjectProps) => {
+export const Link = component$(({ title, time, url }: ProjectProps) => {
 	const ratio = (x: number) => Math.floor((x * 12) / 16)
 
 	return (
 		<a
-			class='relative isolate grid grid-cols-[1fr_3fr] gap-4 rounded p-4 [&>.absolute]:focus-within:opacity-100 [&>.absolute]:hover:opacity-100'
-			href='#'
+			class='relative isolate grid scale-105 gap-4 rounded p-4 sm:scale-100 sm:grid-cols-[1fr_3fr] [&>.absolute]:focus-within:opacity-100 [&>.absolute]:hover:opacity-100'
+			href={url}
 			target='_blank'
 			rel='noopener noreferrer'
 			aria-label={`${title} (opens in a new tab)`}
 			title={title}
 		>
-			<div class='mt-1 h-fit w-fit rounded border-2 border-surface-900/75'>
+			<div class='mt-1 hidden h-fit w-fit rounded border-2 border-surface-900/75 sm:inline-block'>
 				<img
 					class='rounded'
 					src='https://picsum.photos/200/'
@@ -60,10 +61,12 @@ const projects: ProjectProps[] = [
 		title:
 			'Project this is a long title, that is like a description in the and of the day',
 		time: '2020',
+		url: '#',
 	},
 	{
 		title:
 			'Project this is a long title, that is like a description in the and of the day',
 		time: '2020',
+		url: '#',
 	},
 ]

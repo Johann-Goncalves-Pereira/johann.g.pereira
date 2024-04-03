@@ -18,7 +18,7 @@ export default component$(() => {
 						/>
 					),
 				)}
-				<a class='mt-12 text-lg font-semibold' href='/archive'>
+				<a class=' text-lg font-semibold' href='/archive'>
 					View Full Project Archive
 				</a>
 			</nav>

@@ -22,13 +22,13 @@ export default component$(
 
 		return (
 			<article
-				class='relative isolate grid grid-cols-[1fr_3fr] gap-4 p-4 text-sm [&_a>span]:focus-within:opacity-100 [&_a>span]:hover:opacity-100'
+				class='relative isolate grid scale-105 gap-4 p-4 text-sm sm:scale-100 sm:grid-cols-[1fr_3fr] [&_a>span]:focus-within:opacity-100 [&_a>span]:hover:opacity-100'
 				aria-labelledby={titleToId}
 			>
 				{date ? (
-					<i>{date}</i>
+					<i class='hidden sm:inline-block'>{date}</i>
 				) : image ? (
-					<div class='mt-1 h-fit w-fit rounded border-2 border-surface-900/75'>
+					<div class='mt-1 hidden h-fit w-fit rounded border-2 border-surface-900/75 sm:inline-block'>
 						<img
 							class='rounded'
 							style={{
