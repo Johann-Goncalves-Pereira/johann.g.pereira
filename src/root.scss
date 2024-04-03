@@ -22,9 +22,9 @@
 	--color-surface-950: hsl(46, 100%, 3%);
 	@include color-values(surface-950, 46, 100%, 3%);
 
-	--color-primary-500: hsl(17, 83%, 46%);
-	@include color-values(primary-500, 17, 83%, 46%);
-	--color-primary-700: hsl(25, 85%, 17%);
+	--color-primary-500: hsl(17, 83%, 56%);
+	@include color-values(primary-500, 17, 83%, 56%);
+	--color-primary-700: hsl(25, 85%, 8%);
 	@include color-values(primary-700, 25, 85%, 8%);
 
 	@media (prefers-color-scheme: light) {
@@ -37,9 +37,9 @@
 		--color-surface-950: hsl(46, 100%, 97%);
 		@include color-values(surface-950, 46, 100%, 97%);
 
-		--color-primary-500: hsl(17, 83%, 54%);
-		@include color-values(primary-500, 17, 83%, 54%);
-		--color-primary-700: hsl(26, 94%, 83%);
+		--color-primary-500: hsl(17, 83%, 40%);
+		@include color-values(primary-500, 17, 83%, 40%);
+		--color-primary-700: hsl(26, 94%, 79%);
 		@include color-values(primary-700, 26, 94%, 93%);
 	}
 }
