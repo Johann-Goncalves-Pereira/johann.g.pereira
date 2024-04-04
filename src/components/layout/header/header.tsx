@@ -1,13 +1,5 @@
-import {
-	component$,
-	useSignal,
-	$,
-	useOnDocument,
-	useVisibleTask$,
-	useTask$,
-	useOn,
-} from '@builder.io/qwik'
-import { JSX } from '@builder.io/qwik/jsx-runtime'
+import { component$, useSignal, $, useOn } from '@builder.io/qwik'
+import type { JSX } from '@builder.io/qwik/jsx-runtime'
 import { twMerge } from 'tailwind-merge'
 
 export default component$(() => {
@@ -19,15 +11,18 @@ export default component$(() => {
 			const observer = new IntersectionObserver(entries => {
 				entries.forEach(
 					entry => {
+						const id = entry.target.id
+						const intersecting = entry.isIntersecting
 						if (
-							!entry.isIntersecting &&
-							currentSection.value !== 'about' &&
-							entry.target.id === 'projects'
-						)
+							!intersecting &&
+							id === 'projects' &&
+							currentSection.value !== 'about'
+						) {
 							currentSection.value = 'experience'
+						}
 
-						if (!entry.isIntersecting) return
-						if (entry.isIntersecting) currentSection.value = entry.target.id
+						if (!intersecting) return
+						if (intersecting) currentSection.value = id
 					},
 					{ rootMargin: '-96px' },
 				)

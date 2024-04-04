@@ -16,7 +16,7 @@ export default component$(
 		const titleToId = title
 			.split(' ')
 			.join('-')
-			.replace(/[\,\.\;\'\"]/, '')
+			.replace(/[,.;'"]/, '')
 			.toLocaleLowerCase()
 		const videoRatio = (x: number) => Math.floor((x * 9) / 16)
 

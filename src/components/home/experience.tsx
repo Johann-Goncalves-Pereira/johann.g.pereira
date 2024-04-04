@@ -1,5 +1,7 @@
 import { component$ } from '@builder.io/qwik'
-import Widget, { WidgetProps } from './widget'
+
+import type { WidgetProps } from './widget'
+import Widget from './widget'
 
 export default component$(() => {
 	return (
