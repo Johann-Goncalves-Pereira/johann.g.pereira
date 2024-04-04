@@ -27,10 +27,7 @@ export default component$(() => {
 							currentSection.value = 'experience'
 
 						if (!entry.isIntersecting) return
-
 						if (entry.isIntersecting) currentSection.value = entry.target.id
-
-						console.log(entry.target.id, entry.isIntersecting)
 					},
 					{ rootMargin: '-96px' },
 				)
@@ -39,9 +36,11 @@ export default component$(() => {
 			const elements = document.querySelectorAll(
 				'#about, #experience, #projects',
 			)
-			elements.forEach(element => {
-				observer.observe(element)
-			})
+
+			if (elements.length > 0)
+				elements.forEach(element => {
+					observer.observe(element)
+				})
 
 			return () => observer.disconnect()
 		}),
