@@ -1,48 +1,44 @@
-import { component$, useSignal, $, useOn } from '@builder.io/qwik'
+import { component$, useSignal, $ } from '@builder.io/qwik'
 import type { JSX } from '@builder.io/qwik/jsx-runtime'
 import { twMerge } from 'tailwind-merge'
 
 export default component$(() => {
 	const currentSection = useSignal('about')
 
-	useOn(
-		'qvisible',
-		$(() => {
-			const observer = new IntersectionObserver(entries => {
-				entries.forEach(
-					entry => {
-						const id = entry.target.id
-						const intersecting = entry.isIntersecting
-						if (
-							!intersecting &&
-							id === 'projects' &&
-							currentSection.value !== 'about'
-						) {
-							currentSection.value = 'experience'
-						}
-
-						if (!intersecting) return
-						if (intersecting) currentSection.value = id
-					},
-					{ rootMargin: '-96px' },
-				)
-			})
-
-			const elements = document.querySelectorAll(
-				'#about, #experience, #projects',
+	const updateObserver$ = $(async () => {
+		const observer = new IntersectionObserver(async entries => {
+			entries.forEach(
+				entry => {
+					if (
+						!entry.isIntersecting &&
+						entry.target.id === 'projects' &&
+						currentSection.value !== 'about'
+					)
+						currentSection.value = 'experience'
+					if (entry.isIntersecting) currentSection.value = entry.target.id
+				},
+				{ rootMargin: '-96px' },
 			)
+		})
+		return observer
+	})
 
-			if (elements.length > 0)
-				elements.forEach(element => {
-					observer.observe(element)
-				})
-
-			return () => observer.disconnect()
-		}),
-	)
+	const updateNav$ = $(async (observer: IntersectionObserver) => {
+		const elements = document.querySelectorAll<HTMLElement>(
+			'#about, #experience, #projects',
+		)
+		if (elements.length > 0)
+			elements.forEach(element => observer.observe(element))
+		return () => elements.forEach(element => observer.unobserve(element))
+	})
 
 	return (
-		<header class='pointer-events-none flex h-full w-auto flex-col place-content-center justify-between gap-y-24 px-4 pr-2 pt-24 md:px-10 lg:sticky lg:top-0 lg:z-10 lg:mx-auto lg:w-1/2 lg:max-w-screen-sm lg:-translate-x-1/2 lg:pb-28 lg:pl-16 lg:pr-0 lg:pt-28'>
+		<header
+			class='pointer-events-none flex h-full w-auto flex-col place-content-center justify-between gap-y-24 px-4 pr-2 pt-24 sm:pt-28 md:px-12 lg:sticky lg:top-0 lg:z-10 lg:mx-auto lg:w-1/2 lg:max-w-screen-sm lg:-translate-x-1/2 lg:pb-32 lg:pl-24 lg:pr-0 lg:pt-32'
+			onQVisible$={async () => {
+				await updateNav$(await updateObserver$())
+			}}
+		>
 			<div class='pointer-events-auto grid gap-24'>
 				<div>
 					<h1 class='text-5xl font-bold'>Johann Pereira</h1>
@@ -71,19 +67,19 @@ export default component$(() => {
 				</nav>
 			</div>
 			<nav class='pointer-events-auto mt-auto flex gap-4'>
-				{socials.map((social: SocialProps) => {
+				{socials.map(({ title, href, icon }: SocialProps) => {
 					return (
 						<a
 							class='block opacity-75 transition-opacity hover:opacity-100 focus-visible:opacity-100'
-							href={social.href}
+							href={href}
 							target='_blank'
 							rel='noreferrer noopener'
-							aria-label={`${social.title} (opens in a new tab)`}
-							title={social.title}
-							key={social.title}
+							aria-label={`${title} (opens in a new tab)`}
+							title={title}
+							key={title}
 						>
-							<span class='sr-only'>{social.title}</span>
-							{social.icon}
+							<span class='sr-only'>{title}</span>
+							{icon}
 						</a>
 					)
 				})}
@@ -98,7 +94,7 @@ interface SocialProps {
 	icon: JSX.Element
 }
 
-const socials: SocialProps[] = [
+export const socials: SocialProps[] = [
 	{
 		title: 'GitHub',
 		href: 'https://github.com/brittanychiang',

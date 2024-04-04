@@ -49,5 +49,8 @@
     "undici": "*",
     "vite": "^5.1.4",
     "vite-tsconfig-paths": "^4.2.1"
+  },
+  "dependencies": {
+    "htmx.org": "^1.9.11"
   }
 }
