@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css?family=Emilys%20Candy:700|Emilys%20Candy:400');
+@font-face {
+	src:
+		local('Shantell Sans'),
+		url(/fonts/ShantellSans.ttf) format('ttf');
+	font-family: 'Shantell Sans';
+}
 
 @function hsl($h, $s, $l) {
 	@return unquote('#{$h} #{$s} #{$l}');
@@ -27,6 +32,11 @@
 	--color-primary-700: hsl(25, 85%, 8%);
 	@include color-values(primary-700, 25, 85%, 8%);
 
+	@media (prefers-contrast: high) {
+		--color-primary-500: hsl(17, 83%, 86%);
+		@include color-values(primary-500, 17, 83%, 86%);
+	}
+
 	@media (prefers-color-scheme: light) {
 		--color-surface-700: hsl(40, 4%, 14%);
 		@include color-values(surface-700, 40, 4%, 14%);
@@ -41,6 +51,11 @@
 		@include color-values(primary-500, 17, 83%, 40%);
 		--color-primary-700: hsl(26, 94%, 79%);
 		@include color-values(primary-700, 26, 94%, 93%);
+
+		@media (prefers-contrast: high) {
+			--color-primary-500: hsl(17, 83%, 14%);
+			@include color-values(primary-500, 17, 83%, 14%);
+		}
 	}
 }
 :where(img) {
