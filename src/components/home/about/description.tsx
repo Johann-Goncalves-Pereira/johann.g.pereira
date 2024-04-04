@@ -10,7 +10,7 @@ export default component$(({ paragraph, index }: DescriptionProps) => (
 		<p
 			class={
 				index === 0
-					? 'first-letter:float-left first-letter:mr-2 first-letter:text-5xl'
+					? 'first-letter-2 first-letter:float-left first-letter:mr-3'
 					: ''
 			}
 		>

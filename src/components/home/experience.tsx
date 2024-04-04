@@ -50,4 +50,28 @@ const experiences: WidgetProps[] = [
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?',
 		labels: ['Label 1', 'Label 2'],
 	},
+	{
+		image: 'https://picsum.photos/1500/830',
+		url: 'https://github.com',
+		title: 'Experience Title',
+		description:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?',
+		labels: ['Label 1', 'Label 2'],
+	},
+	{
+		image: 'https://picsum.photos/1500/830',
+		url: 'https://github.com',
+		title: 'Experience Title',
+		description:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?',
+		labels: ['Label 1', 'Label 2'],
+	},
+	{
+		image: 'https://picsum.photos/1500/830',
+		url: 'https://github.com',
+		title: 'Experience Title',
+		description:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?',
+		labels: ['Label 1', 'Label 2'],
+	},
 ]

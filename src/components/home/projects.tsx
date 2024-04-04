@@ -43,7 +43,7 @@ export const Link = component$(({ title, time, url }: ProjectProps) => {
 					height={ratio(200)}
 				/>
 			</div>
-			<div class='flex-1'>
+			<div class='grid flex-1 gap-2'>
 				<time class='font-semibold text-surface-700/75' dateTime={time}>
 					{time}
 				</time>
