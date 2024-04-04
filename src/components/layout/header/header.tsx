@@ -4,25 +4,51 @@ import {
 	$,
 	useOnDocument,
 	useVisibleTask$,
+	useTask$,
+	useOn,
 } from '@builder.io/qwik'
 import { JSX } from '@builder.io/qwik/jsx-runtime'
 import { twMerge } from 'tailwind-merge'
 
 export default component$(() => {
-	const currentSection = useSignal('')
+	const currentSection = useSignal('about')
 
-	useOnDocument(
-		'qinit',
+	useOn(
+		'qvisible',
 		$(() => {
-			document.getElementById(currentSection.value)?.scrollIntoView()
-			const href = window.location.href
-			const id = href.match(/#(\w+)/)?.[1] || ''
-			currentSection.value = id
+			const observer = new IntersectionObserver(entries => {
+				entries.forEach(
+					entry => {
+						if (
+							!entry.isIntersecting &&
+							currentSection.value !== 'about' &&
+							entry.target.id === 'projects'
+						)
+							currentSection.value = 'experience'
+
+						if (!entry.isIntersecting) return
+
+						if (entry.isIntersecting) currentSection.value = entry.target.id
+
+						console.log(entry.target.id, entry.isIntersecting)
+					},
+					{ rootMargin: '-96px' },
+				)
+			})
+
+			const elements = document.querySelectorAll(
+				'#about, #experience, #projects',
+			)
+			elements.forEach(element => {
+				observer.observe(element)
+			})
+
+			return () => observer.disconnect()
 		}),
 	)
 
 	return (
-		<header class='pointer-events-none flex h-full w-auto flex-col place-content-center justify-between gap-y-24 px-4 pr-2 pt-24 md:px-10 lg:sticky lg:top-0 lg:z-10 lg:mx-auto lg:w-1/2 lg:max-w-screen-sm lg:-translate-x-1/2 lg:pb-32 lg:pl-24 lg:pr-0 lg:pt-32'>
+		<header class='pointer-events-none flex h-full w-auto flex-col place-content-center justify-between gap-y-24 px-4 pr-2 pt-24 md:px-10 lg:sticky lg:top-0 lg:z-10 lg:mx-auto lg:w-1/2 lg:max-w-screen-sm lg:-translate-x-1/2 lg:pb-28 lg:pl-16 lg:pr-0 lg:pt-28'>
 			<div class='pointer-events-auto grid gap-24'>
 				<div>
 					<h1 class='text-5xl font-bold'>Johann Pereira</h1>
@@ -43,7 +69,6 @@ export default component$(() => {
 							)}
 							href={`#${title}`}
 							key={`${title}`}
-							window:onClick$={() => (currentSection.value = title)}
 						>
 							<span class='h-px w-8 bg-surface-700 transition-width'></span>{' '}
 							{title}
@@ -52,7 +77,7 @@ export default component$(() => {
 				</nav>
 			</div>
 			<nav class='pointer-events-auto mt-auto flex gap-4'>
-				{socials.map(social => {
+				{socials.map((social: SocialProps) => {
 					return (
 						<a
 							class='block opacity-75 transition-opacity hover:opacity-100 focus-visible:opacity-100'

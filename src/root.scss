@@ -66,6 +66,10 @@
 	tab-size: 4;
 }
 
+.first-letter-2::first-letter {
+	initial-letter: 2;
+}
+
 // <uniquifier>: Use a unique and descriptive class name
 // <weight>: Use a value from 300 to 800
 // <bounce>: Use a value from -100 to 100
@@ -93,8 +97,9 @@ input:matches([type='password'], [type='search']) {
 }
 
 :focus {
-	outline-width: 0;
+	outline-color: transparent;
 }
+
 :focus-visible {
 	outline: 2px solid var(--color-primary-500);
 	outline-offset: -2px;
