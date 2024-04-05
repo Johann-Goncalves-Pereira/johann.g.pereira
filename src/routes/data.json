@@ -1,0 +1,53 @@
+{
+	"home": {
+		"header": {
+			"title": "Johann Pereira",
+			"subtitle": "Frontend Engineer",
+			"description": "I build pixel-perfect, engaging,\nand accessible digital experiences.",
+			"navSections": ["about", "experience", "projects"],
+			"socials": [
+				{
+					"title": "GitHub",
+					"href": "https://github.com"
+				},
+				{
+					"title": "Linkedin",
+					"href": "https://www.linkedin.com"
+				},
+				{
+					"title": "Twitter",
+					"href": "https://twitter.com"
+				}
+			]
+		},
+		"about": {
+			"articles": [
+				{
+					"title": "Frontend Engineer At Reside",
+					"date": "2023 — 2024",
+					"href": "https://reside.com",
+					"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?",
+					"labels": ["Label 1", "Label 2"]
+				},
+				{
+					"title": "Developer At easySynergy",
+					"date": "2023 — 2024",
+					"href": "https://easySinergy.com",
+					"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?",
+					"labels": ["Label 1", "Label 2"]
+				},
+				{
+					"title": "Frontend At Materialize",
+					"date": "2022 — 2023",
+					"href": "https://materializecss.com",
+					"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?",
+					"labels": ["Label 1", "Label 2"]
+				}
+			],
+			"portfolioLink": {
+				"title": "View Full",
+				"href": "/johann.pdf"
+			}
+		}
+	}
+}

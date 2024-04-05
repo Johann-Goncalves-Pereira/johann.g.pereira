@@ -9,15 +9,17 @@
 	font-family: 'Shantell Sans';
 }
 
-@function hsl($h, $s, $l) {
-	@return unquote('#{$h} #{$s} #{$l}');
-}
-
-@mixin color-values($name, $h, $s, $l) {
-	--color-values-#{$name}: #{hsl($h, $s, $l)};
-}
-
 :root {
+	@function hsl($h, $s, $l) {
+		@return unquote('#{$h} #{$s} #{$l}');
+	}
+
+	@mixin color-values($name, $h, $s, $l) {
+		--color-values-#{$name}: #{hsl($h, $s, $l)};
+	}
+
+	color-scheme: dark;
+
 	--color-surface-700: hsl(40, 4%, 86%);
 	@include color-values(surface-700, 40, 4%, 86%);
 	--color-surface-800: hsl(34, 6%, 76%);
@@ -38,6 +40,8 @@
 	}
 
 	@media (prefers-color-scheme: light) {
+		color-scheme: light;
+
 		--color-surface-700: hsl(40, 4%, 14%);
 		@include color-values(surface-700, 40, 4%, 14%);
 		--color-surface-800: hsl(34, 6%, 24%);
@@ -58,18 +62,6 @@
 		}
 	}
 }
-:where(img) {
-	vertical-align: middle;
-
-	shape-margin: 0.75rem;
-	background-size: cover;
-
-	background-repeat: no-repeat;
-	max-width: 100%;
-	height: auto;
-	font-style: italic;
-	font-weight: 900;
-}
 
 :where(html) {
 	font-size: 100%;
@@ -79,10 +71,6 @@
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
 	tab-size: 4;
-}
-
-.first-letter-2::first-letter {
-	initial-letter: 2;
 }
 
 // <uniquifier>: Use a unique and descriptive class name
@@ -98,6 +86,23 @@
 		'BNCE' 0,
 		'INFM' 0,
 		'SPAC' 0;
+}
+
+:where(img) {
+	vertical-align: middle;
+
+	shape-margin: 0.75rem;
+	background-size: cover;
+
+	background-repeat: no-repeat;
+	max-width: 100%;
+	height: auto;
+	font-style: italic;
+	font-weight: 900;
+}
+
+:where(table, thead, tbody, tfoot, tr, th, td) {
+	all: unset;
 }
 
 input,
@@ -120,11 +125,13 @@ input:matches([type='password'], [type='search']) {
 	outline-offset: -2px;
 	border-radius: inherit;
 }
-// prefer hight contrast
-@media (prefers-contrast: high) {
-	:focus {
-		outline: 2px solid red;
-	}
+
+::selection {
+	background-color: hsl(var(--color-values-primary-500) / 0.5);
+}
+
+.first-letter-2::first-letter {
+	initial-letter: 2;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */

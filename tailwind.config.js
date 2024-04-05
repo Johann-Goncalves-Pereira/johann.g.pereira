@@ -23,6 +23,9 @@ export default {
 			comic: '"Shantell Sans", "Comic Sans MS", "Comic Sans", cursive',
 		},
 		extend: {
+			gridTemplateColumns: {
+				table: '4ch 1fr 12ch repeat(2, 1fr)',
+			},
 			width: {
 				dvw: '100dvw',
 			},
