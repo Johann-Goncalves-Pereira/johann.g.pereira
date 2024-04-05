@@ -9,7 +9,9 @@ export default component$(() => {
 			<header class='mx-auto flex w-full max-w-screen-xl flex-col-reverse gap-y-2 px-24 pt-24 capitalize'>
 				<h1 class='text-5xl font-bold'>Projects Archive</h1>
 				<nav class='text-lg font-semibold'>
-					<a href='/'>Johann Gonçalves Pereira</a>
+					<h2>
+						<a href='/'>Johann Gonçalves Pereira</a>
+					</h2>
 				</nav>
 				{/* {width.value} */}
 			</header>
