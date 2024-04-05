@@ -36,9 +36,11 @@ export const Wrapper = component$(({ date, image, title }: WrapperProps) => {
 	}
 	return (
 		<>
-			{date ? (
+			{(!!date && !!image) || (!date && !image) ? (
+				<span class='text-3xl font-black text-primary-700'>Error</span>
+			) : date ? (
 				<i class='hidden sm:inline-block'>{date}</i>
-			) : image ? (
+			) : (
 				<div class='mt-1 hidden h-fit w-fit rounded border-2 border-surface-900/75 sm:inline-block'>
 					<img
 						class='rounded'
@@ -49,8 +51,6 @@ export const Wrapper = component$(({ date, image, title }: WrapperProps) => {
 						style={imageStyle}
 					/>
 				</div>
-			) : (
-				<span class='text-3xl font-black text-primary-700'>Error</span>
 			)}
 		</>
 	)
@@ -92,7 +92,7 @@ export const Footer = component$(({ stars, labels }: FooterProps) => (
 	</footer>
 ))
 
-export interface WidgetProps extends WrapperProps, FooterProps {
+interface WidgetProps extends WrapperProps, FooterProps {
 	title: string
 	description: string
 	href: string

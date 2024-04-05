@@ -1,21 +1,10 @@
 import { component$ } from '@builder.io/qwik'
 
-import type { WidgetProps } from './widget'
 import Widget from './widget'
 import Arrow from '../Svg/arrow'
 
 import Description from './about/description.mdx'
 import data from '~/routes/data.json'
-
-interface CompanyProps {
-	company: {
-		title: string
-		date: string
-		href: string
-		description: string
-		labels: string[]
-	}[]
-}
 
 export default component$(() => {
 	const { articles, portfolioLink } = data.home.about
@@ -51,3 +40,13 @@ export const Companies = component$(({ company }: CompanyProps) => (
 		))}
 	</nav>
 ))
+
+interface CompanyProps {
+	company: {
+		title: string
+		date: string
+		href: string
+		description: string
+		labels: string[]
+	}[]
+}
