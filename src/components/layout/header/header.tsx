@@ -34,7 +34,7 @@ export default component$(() => {
 
 	return (
 		<header
-			class='pointer-events-none flex h-full w-auto flex-col place-content-center justify-between gap-y-24 px-4 pr-2 pt-24 sm:pt-28 md:px-12 lg:sticky lg:top-0 lg:z-10 lg:mx-auto lg:w-1/2 lg:max-w-screen-sm lg:-translate-x-1/2 lg:pb-32 lg:pl-24 lg:pr-0 lg:pt-32'
+			class='pointer-events-none row-span-2 flex h-full w-auto flex-col place-content-center justify-between gap-y-24 px-4 pr-2 pt-24 sm:pt-28 md:px-12 lg:sticky lg:top-0 lg:z-10 lg:mx-auto lg:w-1/2 lg:max-w-screen-sm lg:-translate-x-1/2 lg:pb-32 lg:pl-24 lg:pr-0 lg:pt-32'
 			onQVisible$={async () => {
 				await updateNav$(await updateObserver$())
 			}}
@@ -60,7 +60,7 @@ export default component$(() => {
 							href={`#${title}`}
 							key={`${title}`}
 						>
-							<span class='h-px w-8 bg-surface-700 transition-width'></span>{' '}
+							<span class='h-px w-8 bg-surface-700 transition-width will-change-[width]' />
 							{title}
 						</a>
 					))}

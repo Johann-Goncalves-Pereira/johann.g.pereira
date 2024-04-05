@@ -18,6 +18,8 @@
 }
 
 :root {
+	color-scheme: dark;
+
 	--color-surface-700: hsl(40, 4%, 86%);
 	@include color-values(surface-700, 40, 4%, 86%);
 	--color-surface-800: hsl(34, 6%, 76%);
@@ -38,6 +40,8 @@
 	}
 
 	@media (prefers-color-scheme: light) {
+		color-scheme: light;
+
 		--color-surface-700: hsl(40, 4%, 14%);
 		@include color-values(surface-700, 40, 4%, 14%);
 		--color-surface-800: hsl(34, 6%, 24%);
@@ -57,18 +61,6 @@
 			@include color-values(primary-500, 17, 83%, 14%);
 		}
 	}
-}
-:where(img) {
-	vertical-align: middle;
-
-	shape-margin: 0.75rem;
-	background-size: cover;
-
-	background-repeat: no-repeat;
-	max-width: 100%;
-	height: auto;
-	font-style: italic;
-	font-weight: 900;
 }
 
 :where(html) {
@@ -100,6 +92,23 @@
 		'SPAC' 0;
 }
 
+:where(img) {
+	vertical-align: middle;
+
+	shape-margin: 0.75rem;
+	background-size: cover;
+
+	background-repeat: no-repeat;
+	max-width: 100%;
+	height: auto;
+	font-style: italic;
+	font-weight: 900;
+}
+
+:where(table, thead, tbody, tfoot, tr, th, td) {
+	all: unset;
+}
+
 input,
 input:matches([type='password'], [type='search']) {
 	-webkit-appearance: textfield;
@@ -120,6 +129,7 @@ input:matches([type='password'], [type='search']) {
 	outline-offset: -2px;
 	border-radius: inherit;
 }
+
 // prefer hight contrast
 @media (prefers-contrast: high) {
 	:focus {

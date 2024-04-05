@@ -39,23 +39,25 @@ export default component$(() => {
 		}
 	})
 
+	const mouseUpdate$ = $(async (x: number, y: number) => {
+		if (reduce.value) return
+		const wx = x - size.w * 0.575
+		const hy = y - size.h * 0.575
+		pos.x = wx
+		pos.y = hy
+	})
+
 	return (
 		<>
 			<div
-				class='relative z-10 grid h-full w-full overflow-y-auto scroll-smooth rounded-lg border-2 border-surface-900 border-opacity-50 backdrop-blur-[6rem] scrollbar-none scrollbar-thumb-primary-700 [&~:not(.pointer-events-none)]:hidden'
-				onMouseMove$={({ x, y }) => {
-					if (reduce.value) return
-					const wx = x - size.w * 0.575
-					const hy = y - size.h * 0.575
-					pos.x = wx
-					pos.y = hy
-				}}
+				class='relative z-10 grid h-full w-full grid-rows-[auto_1fr] overflow-y-auto scroll-smooth rounded-lg border-2 border-surface-900 border-opacity-50 backdrop-blur-[6rem] scrollbar-none scrollbar-thumb-primary-700 [&~:not(.pointer-events-none)]:hidden'
+				onMouseMove$={async ({ x, y }) => await mouseUpdate$(x, y)}
 			>
 				<Slot />
 			</div>
 			<spam
 				ref={elRef}
-				class='pointer-events-none absolute left-2 top-2 z-[9] h-64 w-64 transform-gpu rounded-full bg-primary-500 opacity-50 will-change-transform'
+				class='pointer-events-none absolute left-2 top-2 -z-10 h-64 w-64 transform-gpu rounded-full bg-primary-500 opacity-50 will-change-transform'
 				style={ballStyle({ x: pos.x, y: pos.y, w: size.w, h: size.h })}
 				aria-hidden
 				onQVisible$={async () => {
