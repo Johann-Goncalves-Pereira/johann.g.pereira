@@ -10,15 +10,20 @@ export default component$(() => {
 	const { articles, portfolioLink } = data.home.about
 	return (
 		<section id='about' aria-label='about'>
-			<header class='first-letter-2 first-letter:float-left first-letter:mr-3'>
+			<header class='first-letter-2 first-letter:float-left first-letter:mr-3 [&_strong]:font-bold'>
 				<Description />
 			</header>
 
 			<Companies company={articles} />
 
-			<footer class='mt-12 text-lg font-semibold '>
-				<a href={portfolioLink.href} target='_blank' rel='noopener noreferrer'>
-					{portfolioLink.href}
+			<footer class='mt-12 grid text-lg font-semibold'>
+				<a
+					class='svg--45'
+					href={portfolioLink.href}
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					{portfolioLink.title}
 					<Arrow />
 				</a>
 			</footer>

@@ -1,13 +1,11 @@
 import { component$ } from '@builder.io/qwik'
 
+import Footer from './footer.mdx'
+
 export default component$(() => {
 	return (
 		<footer class='pb-24 text-sm lg:col-start-2'>
-			<p>
-				Loosely designed in Figma and coded in Visual Studio Code by yours
-				truly. Built with Next.js and Tailwind CSS, deployed with Vercel. All
-				text is set in the Inter typeface.
-			</p>
+			<Footer />
 		</footer>
 	)
 })

@@ -112,6 +112,20 @@ input:matches([type='password'], [type='search']) {
 	color: text;
 }
 
+.first-letter-2::first-letter {
+	initial-letter: 2;
+}
+
+.svg {
+	&--45 {
+		&:hover,
+		&:focus-visible {
+			svg {
+				transform: scale(1.125) translate3d(0.125rem, -0.125rem, 0);
+			}
+		}
+	}
+}
 :target {
 	scroll-margin-block: theme('size.24');
 }
@@ -128,10 +142,6 @@ input:matches([type='password'], [type='search']) {
 
 ::selection {
 	background-color: hsl(var(--color-values-primary-500) / 0.5);
-}
-
-.first-letter-2::first-letter {
-	initial-letter: 2;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */

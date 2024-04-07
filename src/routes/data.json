@@ -48,6 +48,42 @@
 				"title": "View Full",
 				"href": "/johann.pdf"
 			}
+		},
+		"experience": {
+			"articles": [
+				{
+					"title": "Frontend Engineer At Reside",
+					"href": "https://reside.com",
+					"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?",
+					"labels": ["Label 1", "Label 2"],
+					"image": "https://picsum.photos/1520/840"
+				},
+				{
+					"title": "Developer At easySynergy",
+					"href": "https://easySinergy.com",
+					"description": "I build pixel-perfect, engaging,\nand accessible digital experiences.",
+					"labels": ["Label 1", "Label 2"],
+					"image": "https://picsum.photos/1510/820"
+				}
+			],
+			"archiveLink": {
+				"title": "View Full Project Archive",
+				"href": "/archive"
+			}
+		},
+		"projects": {
+			"links": [
+				{
+					"title": "Project this is a long title, that is like a description in the and of the day",
+					"href": "/project-1",
+					"time": "2022"
+				},
+				{
+					"title": "Project this is a long title, that is like a description in the and of the day",
+					"href": "/project-2",
+					"time": "2022"
+				}
+			]
 		}
 	}
 }
