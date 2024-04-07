@@ -1,4 +1,5 @@
-import { QRL, component$ } from '@builder.io/qwik'
+import type { QRL } from '@builder.io/qwik'
+import { component$ } from '@builder.io/qwik'
 
 import Widget from './widget'
 import Arrow from '../Svg/arrow'
@@ -35,53 +36,3 @@ export default component$(({ fnQRL }: ExperienceProps) => {
 interface ExperienceProps {
 	fnQRL: QRL<() => Promise<() => void>>
 }
-
-const experiences = [
-	{
-		image: 'https://picsum.photos/1520/840',
-		href: 'https://github.com',
-		title: 'Experience Title',
-		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?',
-		labels: ['Label 1', 'Label 2'],
-	},
-	{
-		image: 'https://picsum.photos/1510/820',
-		href: 'https://github.com',
-		title: 'Experience Title',
-		description: 'Lorem ipsum dolor sipsam?',
-		labels: ['Label 1', 'Label 2'],
-	},
-	{
-		image: 'https://picsum.photos/1500/830',
-		href: 'https://github.com',
-		title: 'Experience Title',
-		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?',
-		labels: ['Label 1', 'Label 2'],
-	},
-	{
-		image: 'https://picsum.photos/1500/830',
-		href: 'https://github.com',
-		title: 'Experience Title',
-		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?',
-		labels: ['Label 1', 'Label 2'],
-	},
-	{
-		image: 'https://picsum.photos/1500/830',
-		href: 'https://github.com',
-		title: 'Experience Title',
-		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?',
-		labels: ['Label 1', 'Label 2'],
-	},
-	{
-		image: 'https://picsum.photos/1500/830',
-		href: 'https://github.com',
-		title: 'Experience Title',
-		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?',
-		labels: ['Label 1', 'Label 2'],
-	},
-]

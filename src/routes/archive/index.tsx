@@ -1,9 +1,7 @@
-import { component$, useSignal } from '@builder.io/qwik'
-import { DocumentHead } from '@builder.io/qwik-city'
+import type { DocumentHead } from '@builder.io/qwik-city'
+import { component$ } from '@builder.io/qwik'
 
 export default component$(() => {
-	const width = useSignal(0)
-
 	return (
 		<>
 			<header class='mx-auto flex w-full max-w-screen-xl flex-col-reverse gap-y-2 px-24 pt-24 capitalize'>
@@ -18,7 +16,7 @@ export default component$(() => {
 			<main class='mx-auto mt-24 w-full max-w-screen-xl px-24 pb-24'>
 				<table class='flex h-full flex-col gap-y-8 overflow-auto'>
 					<thead>
-						<tr class='grid-cols-table relative grid gap-4 font-medium'>
+						<tr class='relative grid grid-cols-table gap-4 font-medium'>
 							<th>Year</th>
 							<th>Project</th>
 							<th>Made at</th>
@@ -30,12 +28,12 @@ export default component$(() => {
 						</tr>
 					</thead>
 					<tbody class='grid gap-y-8'>
-						<tr class='grid-cols-table relative grid gap-4'>
+						<tr class='relative grid grid-cols-table gap-4'>
 							<td>
 								<time dateTime='2022'>2022</time>
 							</td>
 							<td>
-								<strong class='font-medium'>Emerson Collective</strong>
+								<strong class='font-medium'>Emerson Collective</strong>``
 							</td>
 							<td>Upstatement</td>
 							<td>
@@ -67,7 +65,7 @@ export default component$(() => {
 								<hr />
 							</td>
 						</tr>
-						<tr class='grid-cols-table relative grid gap-4'>
+						<tr class='relative grid grid-cols-table gap-4'>
 							<td>
 								<time dateTime='2022'>2022</time>
 							</td>
