@@ -1,12 +1,17 @@
 import { component$ } from '@builder.io/qwik'
+
 import Arrow from '../Svg/arrow'
 
+import data from '~/routes/data.json'
+
 export default component$(() => {
+	const { links } = data.home.projects
+
 	return (
 		<aside class='mt-24' id='projects'>
 			<nav>
-				{projects.map(({ title, time, url }, index) => (
-					<Link title={title} time={time} url={url} key={index} />
+				{links.map(({ title, time, href }, index) => (
+					<Link title={title} time={time} href={href} key={index} />
 				))}
 			</nav>
 		</aside>
@@ -16,16 +21,16 @@ export default component$(() => {
 interface ProjectProps {
 	title: string
 	time: string
-	url: string
+	href: string
 }
 
-export const Link = component$(({ title, time, url }: ProjectProps) => {
+export const Link = component$(({ title, time, href }: ProjectProps) => {
 	const ratio = (x: number) => Math.floor((x * 12) / 16)
 
 	return (
 		<a
-			class='relative isolate grid scale-105 gap-4 rounded p-4 sm:scale-100 sm:grid-cols-[1fr_3fr] [&>.absolute]:focus-within:opacity-100 [&>.absolute]:hover:opacity-100'
-			href={url}
+			class='svg--45 relative isolate grid scale-105 gap-4 rounded p-4 sm:scale-100 sm:grid-cols-[1fr_3fr] [&>.absolute]:focus-within:opacity-100 [&>.absolute]:hover:opacity-100'
+			href={href}
 			target='_blank'
 			rel='noopener noreferrer'
 			aria-label={`${title} (opens in a new tab)`}
@@ -55,18 +60,3 @@ export const Link = component$(({ title, time, url }: ProjectProps) => {
 		</a>
 	)
 })
-
-const projects: ProjectProps[] = [
-	{
-		title:
-			'Project this is a long title, that is like a description in the and of the day',
-		time: '2020',
-		url: '#',
-	},
-	{
-		title:
-			'Project this is a long title, that is like a description in the and of the day',
-		time: '2020',
-		url: '#',
-	},
-]

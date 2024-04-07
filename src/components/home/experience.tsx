@@ -1,17 +1,16 @@
 import { QRL, component$ } from '@builder.io/qwik'
 
-import type { WidgetProps } from './widget'
 import Widget from './widget'
+import Arrow from '../Svg/arrow'
 
-interface ExperienceProps {
-	fnQRL: QRL<() => Promise<() => void>>
-}
+import data from '~/routes/data.json'
 
 export default component$(({ fnQRL }: ExperienceProps) => {
+	const { articles, archiveLink } = data.home.experience
 	return (
 		<aside id='experience' aria-label='experience' onQVisible$={fnQRL}>
 			<nav class='mt-24 grid gap-8'>
-				{experiences.map(
+				{articles.map(
 					({ image, href: url, title, description, labels }, index) => (
 						<Widget
 							image={image}
@@ -24,15 +23,20 @@ export default component$(({ fnQRL }: ExperienceProps) => {
 						/>
 					),
 				)}
-				<a class=' text-lg font-semibold' href='/archive'>
-					View Full Project Archive
+				<a class='svg--45 text-lg font-semibold' href={archiveLink.href}>
+					{archiveLink.title}
+					<Arrow />
 				</a>
 			</nav>
 		</aside>
 	)
 })
 
-const experiences: WidgetProps[] = [
+interface ExperienceProps {
+	fnQRL: QRL<() => Promise<() => void>>
+}
+
+const experiences = [
 	{
 		image: 'https://picsum.photos/1520/840',
 		href: 'https://github.com',

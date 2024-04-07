@@ -12,7 +12,7 @@ export default component$(
 
 		return (
 			<article
-				class='relative isolate grid scale-105 gap-4 p-4 text-sm sm:scale-100 sm:grid-cols-[1fr_3fr] [&_a>span]:focus-within:opacity-100 [&_a>span]:hover:opacity-100'
+				class='svg--45 relative isolate grid scale-105 gap-4 p-4 text-sm sm:scale-100 sm:grid-cols-[1fr_3fr] [&_a>span]:focus-within:opacity-100 [&_a>span]:hover:opacity-100'
 				aria-labelledby={titleToId}
 			>
 				<Wrapper date={date} image={image} title={title} />

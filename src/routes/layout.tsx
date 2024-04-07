@@ -34,7 +34,7 @@ export default component$(() => {
 	}))
 
 	const reduce = useSignal(false)
-	const elRef = useSignal<Element>()
+	const rectRef = useSignal<Element>()
 
 	const mediaPreferenceUpdate$ = $(async () => {
 		const prefReduce = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -42,7 +42,7 @@ export default component$(() => {
 	})
 
 	const ballUpdate$ = $(async () => {
-		const ball = elRef.value
+		const ball = rectRef.value
 		if (ball) {
 			const rectCli = ball.getBoundingClientRect()
 			rect.w = (rectCli.width + 18) & 0xffffffffffff
@@ -67,10 +67,10 @@ export default component$(() => {
 			>
 				<Slot />
 			</div>
-			<react
-				ref={elRef}
+			<rect
+				ref={rectRef}
 				class='pointer-events-none absolute left-2 top-2 -z-10 h-64 w-64 transform-gpu rounded-full bg-primary-500 opacity-50 will-change-transform'
-				style={ballStyle({
+				style={rectStyle({
 					x: pos.value.x,
 					y: pos.value.y,
 					w: rect.w,
@@ -83,14 +83,8 @@ export default component$(() => {
 	)
 })
 
-interface ballStyleProps {
-	x: number
-	y: number
-	w: number
-	h: number
-}
 
-const ballStyle = ({ x, y, w, h }: ballStyleProps) => {
+const rectStyle = ({ x, y, w, h }: ballStyleProps) => {
 	const translate = `translate(
 		clamp(2px, ${x}px, 100dvw - ${w}px),
 		clamp(2px, ${y}px, 100dvh - ${h}px)
@@ -100,4 +94,12 @@ const ballStyle = ({ x, y, w, h }: ballStyleProps) => {
 		transform: translate,
 		transition: 'transform 100ms ease-out',
 	}
+}
+
+
+interface ballStyleProps {
+	x: number
+	y: number
+	w: number
+	h: number
 }
