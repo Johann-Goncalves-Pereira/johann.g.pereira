@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik'
 import { twMerge } from 'tailwind-merge'
 
-import data from '~/routes/data.json'
+import data from '~/data.json'
 import { CodePen, GitHub, Twitter } from '~/components/Svg/social'
 
 export default component$(({ section }: HeaderProps) => {
@@ -68,7 +68,6 @@ const Social = component$(({ socials }: SocialProps) => (
 		})}
 	</nav>
 ))
-
 
 interface HeaderProps {
 	section: string

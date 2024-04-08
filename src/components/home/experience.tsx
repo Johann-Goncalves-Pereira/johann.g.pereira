@@ -4,7 +4,7 @@ import { component$ } from '@builder.io/qwik'
 import Widget from './widget'
 import Arrow from '../Svg/arrow'
 
-import data from '~/routes/data.json'
+import data from '~/data.json'
 
 export default component$(({ fnQRL }: ExperienceProps) => {
 	const { articles, archiveLink } = data.home.experience

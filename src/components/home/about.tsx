@@ -4,7 +4,7 @@ import Widget from './widget'
 import Arrow from '../Svg/arrow'
 
 import Description from './about/description.mdx'
-import data from '~/routes/data.json'
+import data from '~/data.json'
 
 export default component$(() => {
 	const { articles, portfolioLink } = data.home.about

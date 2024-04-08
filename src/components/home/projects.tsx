@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik'
 
 import Arrow from '../Svg/arrow'
 
-import data from '~/routes/data.json'
+import data from '~/data.json'
 
 export default component$(() => {
 	const { links } = data.home.projects
