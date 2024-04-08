@@ -1,16 +1,12 @@
-# Qwik City App ⚡️
+![Project photo](/public/image.png)
 
-- [Qwik Docs](https://qwik.builder.io/)
-- [Discord](https://qwik.builder.io/chat)
-- [Qwik GitHub](https://github.com/BuilderIO/qwik)
-- [@QwikDev](https://twitter.com/QwikDev)
-- [Vite](https://vitejs.dev/)
+# About project
 
----
+The project is a portfolio for myself, It was inspired [Brittany Chiang](https://brittanychiang.com/) a Senior Front-End Engineer that I really respect.
+
+The tools used to make this website where [Qwik](https://qwik.builder.io/), [Tailwind](https://tailwindcss.com/), [Bun](https://bun.sh/) and [Vercel](https://vercel.com/home). The objective was to make a site with a 100 score!
 
 ## Project Structure
-
-This project is using Qwik with [QwikCity](https://qwik.builder.io/qwikcity/overview/). QwikCity is just an extra set of tools on top of Qwik to make it easier to build a full site, including directory-based routing, layouts, and more.
 
 Inside your project, you'll see the following directory structure:
 
@@ -18,32 +14,29 @@ Inside your project, you'll see the following directory structure:
 ├── public/
 │   └── ...
 └── src/
+    ├── data.json
     ├── components/
     │   └── ...
     └── routes/
-        └── ...
+        └── ...  
 ```
 
-- `src/routes`: Provides the directory-based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.builder.io/qwikcity/routing/overview/) for more info.
-
-- `src/components`: Recommended directory for components.
-
-- `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
+If you want to customize the data/information on the website, simply edit the `src/data.json` file. If you want to change the content of the About or Footer sections, you can find the corresponding MDX files at `src/components/home/about/description.mdx` and `src/components/layout/footer/footer.mdx`, respectively.
 
 ## Add Integrations and deployment
 
-Use the `bun qwik add` command to add additional integrations. Some examples of integrations includes: Cloudflare, Netlify or Express Server, and the [Static Site Generator (SSG)](https://qwik.builder.io/qwikcity/guides/static-site-generation/).
-
-```shell
-bun qwik add # or `bun qwik add`
-```
+To deploy the project, simply fork this template on GitHub, go to Vercel, connect your GitHub account and select the forked repository. Set the build command to `bun run build` and `bun install`. Finally, click deploy.
 
 ## Development
 
 Development mode uses [Vite's development server](https://vitejs.dev/). The `dev` command will server-side render (SSR) the output during development.
 
 ```shell
-npm start # or `bun start`
+bun install # install dependencies
+```
+
+```shell
+bun dev # bun start  
 ```
 
 > Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
@@ -53,7 +46,7 @@ npm start # or `bun start`
 The preview command will create a production build of the client modules, a production build of `src/entry.preview.tsx`, and run a local server. The preview server is only for convenience to preview a production build locally and should not be used as a production server.
 
 ```shell
-bun preview # or `bun preview`
+bun run preview # run before deploying to check
 ```
 
 ## Production
@@ -61,7 +54,7 @@ bun preview # or `bun preview`
 The production build will generate client and server modules by running both client and server build commands. The build command will use Typescript to run a type check on the source code.
 
 ```shell
-bun build # or `bun build`
+bun run build # command for deployment
 ```
 
 ## Vercel Edge
@@ -84,7 +77,7 @@ Additionally, within the `package.json`, the `build.server` script will be updat
 
 ## Production build
 
-To build the application for production, use the `build` command, this command will automatically run `npm run build.server` and `npm run build.client`:
+To build the application for production, use the `build` command, this command will automatically run `bun run build.server` and `bun run build.client`:
 
 ```shell
 npm run build
@@ -97,7 +90,7 @@ npm run build
 To deploy the application for development:
 
 ```shell
-npm run deploy
+bun run deploy
 ```
 
 Notice that you might need a [Vercel account](https://docs.Vercel.com/get-started/) in order to complete this step!
