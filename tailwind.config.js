@@ -36,6 +36,9 @@ export default {
 			transitionProperty: {
 				width: 'width',
 			},
+			backdropBlur: {
+				'4xl': '96px',
+			},
 		},
 	},
 	plugins: [scrollbar],
