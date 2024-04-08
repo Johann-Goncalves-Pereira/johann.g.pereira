@@ -9,7 +9,7 @@ export default component$(({ section }: HeaderProps) => {
 		data.home.header
 
 	return (
-		<header class='pointer-events-none row-span-2 flex h-full w-auto flex-col place-content-center justify-between gap-y-12 px-4 pr-2 pt-24 sm:pt-28 md:px-12 lg:sticky lg:top-0 lg:z-10 lg:mx-auto lg:w-1/2 lg:max-w-screen-sm lg:-translate-x-1/2 lg:pb-32 lg:pl-24 lg:pr-0 lg:pt-32'>
+		<header class='pointer-events-none flex h-full w-auto flex-col place-content-center justify-between gap-y-12 px-4 pr-2 pt-24 sm:pt-28 md:px-12 lg:sticky lg:top-0 lg:z-10 lg:row-span-2 lg:mx-auto lg:w-1/2 lg:max-w-screen-sm lg:-translate-x-1/2 lg:pb-32 lg:pl-24 lg:pr-0 lg:pt-32'>
 			<Titles title={title} subtitle={subtitle} description={description} />
 			<NavSection section={section} sections={navSections} />
 			<Social socials={socials} />

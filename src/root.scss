@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-	src:
-		local('Shantell Sans'),
-		url(/fonts/ShantellSans.ttf) format('ttf');
-	font-family: 'Shantell Sans';
-}
+// @font-face {
+// 	src:
+// 		local('Shantell Sans'),
+// 		url(/fonts/ShantellSans.ttf) format('ttf');
+// 	font-family: 'Shantell Sans';
+// }
 
 :root {
 	@function hsl($h, $s, $l) {
@@ -112,20 +112,6 @@ input:matches([type='password'], [type='search']) {
 	color: text;
 }
 
-.first-letter-2::first-letter {
-	initial-letter: 2;
-}
-
-.svg {
-	&--45 {
-		&:hover,
-		&:focus-visible {
-			svg {
-				transform: scale(1.125) translate3d(0.125rem, -0.125rem, 0);
-			}
-		}
-	}
-}
 :target {
 	scroll-margin-block: theme('size.24');
 }
@@ -157,5 +143,32 @@ input:matches([type='password'], [type='search']) {
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;
 		scroll-behavior: auto !important;
+	}
+}
+
+// custom classes
+
+.first-letter-2::first-letter {
+	initial-letter: 2;
+}
+
+.svg {
+	&--45 {
+		&:hover,
+		&:focus-visible {
+			svg {
+				transform: scale(1.125) translate3d(0.125rem, -0.125rem, 0);
+			}
+		}
+	}
+}
+
+@supports not (backdrop-filter: none) {
+	body > .backdrop-blur-4xl {
+		box-shadow: 0 0 0 theme('size.4') var(--color-surface-950);
+
+		~ rect {
+			filter: blur(theme('backdropBlur.4xl'));
+		}
 	}
 }

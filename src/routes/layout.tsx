@@ -27,79 +27,62 @@ export const useServerTimeLoader = routeLoader$(() => {
 })
 
 export default component$(() => {
+	const reduce = useSignal(false)
+	const ref = useSignal<Element>()
 	const rect = useStore({ w: 0, h: 0, x: 0, y: 0 })
 	const pos = useComputed$(() => ({
-		x: (rect.x - rect.w * 0.575) & 0xffffffffffff,
-		y: (rect.y - rect.h * 0.575) & 0xffffffffffff,
+		x: (rect.x - rect.w * 0.5) & 0xffffffffffff,
+		y: (rect.y - rect.h * 0.525) & 0xffffffffffff,
 	}))
-
-	const reduce = useSignal(false)
-	const rectRef = useSignal<Element>()
 
 	const mediaPreferenceUpdate$ = $(async () => {
 		const prefReduce = window.matchMedia('(prefers-reduced-motion: reduce)')
-		reduce.value = prefReduce.matches
+		await Promise.resolve(prefReduce.matches).then(
+			() => (reduce.value = prefReduce.matches),
+		)
 	})
 
-	const ballUpdate$ = $(async () => {
-		const ball = rectRef.value
-		if (ball) {
-			const rectCli = ball.getBoundingClientRect()
-			rect.w = (rectCli.width + 18) & 0xffffffffffff
-			rect.h = (rectCli.height + 18) & 0xffffffffffff
+	const rectUpdate$ = $(async () => {
+		if (ref.value) {
+			const rectElement = ref.value.getBoundingClientRect()
+			await Promise.resolve(rectElement).then(({ width, height }) => {
+				rect.w = (width + 18) & 0xffffffffffff
+				rect.h = (height + 18) & 0xffffffffffff
+			})
 		}
 	})
 
 	return (
 		<>
 			<div
-				class='relative z-10 grid h-full w-full grid-rows-[auto_1fr] overflow-y-auto scroll-smooth rounded-lg border-2 border-surface-900 border-opacity-50 backdrop-blur-[6rem] scrollbar-none scrollbar-thumb-primary-700 [&~:not(.pointer-events-none)]:hidden'
+				class='relative z-10 grid h-full w-full grid-rows-[auto_1fr] overflow-y-auto scroll-smooth rounded-lg border-2 border-surface-900 border-opacity-50 backdrop-blur-4xl scrollbar-none scrollbar-thumb-primary-700 [&~:not(.pointer-events-none)]:hidden'
+				id='layout'
 				onMouseEnter$={async () => {
 					await mediaPreferenceUpdate$()
 					if (reduce.value) return
-					await ballUpdate$()
+					await rectUpdate$()
 				}}
 				onMouseMove$={async ({ x, y }) => {
 					if (reduce.value) return
-					;(rect.x = x), (rect.y = y)
+					await Promise.resolve((rect.x = x))
+					await Promise.resolve((rect.y = y))
 				}}
-				id='layout'
 			>
 				<Slot />
 			</div>
 			<rect
-				ref={rectRef}
-				class='pointer-events-none absolute left-2 top-2 -z-10 h-64 w-64 transform-gpu rounded-full bg-primary-500 opacity-50 will-change-transform'
-				style={rectStyle({
-					x: pos.value.x,
-					y: pos.value.y,
-					w: rect.w,
-					h: rect.h,
-				})}
+				class='pointer-events-none fixed left-2 top-2 h-64 w-64 rounded-full bg-primary-500 opacity-50 will-change-transform'
+				ref={ref}
 				aria-hidden
-				role='none'
+				style={{
+					transition: 'transform 100ms ease-out',
+					transform: `translate3d(
+						clamp(2px, ${pos.value.x}px, 100dvw - ${rect.w}px),
+						clamp(2px, ${pos.value.y}px, 100dvh - ${rect.h}px),
+						0px
+					);`,
+				}}
 			/>
 		</>
 	)
 })
-
-
-const rectStyle = ({ x, y, w, h }: ballStyleProps) => {
-	const translate = `translate(
-		clamp(2px, ${x}px, 100dvw - ${w}px),
-		clamp(2px, ${y}px, 100dvh - ${h}px)
-	);`
-
-	return {
-		transform: translate,
-		transition: 'transform 100ms ease-out',
-	}
-}
-
-
-interface ballStyleProps {
-	x: number
-	y: number
-	w: number
-	h: number
-}
