@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-	src:
-		local('Shantell Sans'),
-		url(/fonts/ShantellSans.ttf) format('ttf');
-	font-family: 'Shantell Sans';
-}
+// @font-face {
+// 	src:
+// 		local('Shantell Sans'),
+// 		url(/fonts/ShantellSans.ttf) format('ttf');
+// 	font-family: 'Shantell Sans';
+// }
 
 :root {
 	@function hsl($h, $s, $l) {

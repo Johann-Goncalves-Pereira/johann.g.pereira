@@ -19,6 +19,16 @@ export const RouterHead = component$(() => {
 			<link rel='canonical' href={loc.url.href} />
 
 			<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+			<link rel='preconnect' href='https://fonts.googleapis.com' />
+			<link
+				rel='preconnect'
+				href='https://fonts.gstatic.com'
+				crossOrigin='anonymous'
+			/>
+			<link
+				href='https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap'
+				rel='stylesheet'
+			/>
 
 			{head.meta.map(m => (
 				<meta key={m.key} {...m} />
