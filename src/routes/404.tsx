@@ -1,26 +1,7 @@
-import { component$, useSignal, useTask$ } from '@builder.io/qwik'
-
-import fs from 'fs'
-import path from 'path'
+import { component$, useSignal } from '@builder.io/qwik'
 
 export default component$(() => {
-	const routes = useSignal<string[]>([])
-
-	useTask$(() => {
-		const root = process.cwd()
-		const dirPath = path.join(root, 'src/routes')
-		const files: string[] = []
-		files.push('/')
-
-		fs.readdirSync(dirPath).forEach(file => {
-			const absolute = path.join(dirPath, file)
-			const isDir = fs.statSync(absolute).isDirectory()
-			const route = absolute.replace(`${root}/src/routes/`, '')
-			if (isDir) return files.push(route)
-		})
-
-		routes.value = files
-	})
+	const routes = useSignal(['/', 'archive'])
 
 	return (
 		<>
