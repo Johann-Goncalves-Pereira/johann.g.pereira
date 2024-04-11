@@ -76,11 +76,7 @@ export default component$(() => {
 				aria-hidden
 				style={{
 					transition: 'transform 100ms ease-out',
-					transform: `translate3d(
-						clamp(2px, ${pos.value.x}px, 100dvw - ${rect.w}px),
-						clamp(2px, ${pos.value.y}px, 100dvh - ${rect.h}px),
-						0px
-					);`,
+					transform: `translate3d(clamp(2px,${pos.value.x}px,var(--vw) - ${rect.w}px),clamp(2px,${pos.value.y}px,var(--vh) - ${rect.h}px),0px);`,
 				}}
 			/>
 		</>

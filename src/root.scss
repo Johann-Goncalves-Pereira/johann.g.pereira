@@ -61,16 +61,38 @@
 			@include color-values(primary-500, 17, 83%, 14%);
 		}
 	}
+
+	@supports (width: 100dvw) {
+		--vw: 100dvw;
+	}
+	@supports not (width: 100dvw) {
+		--vw: 100vw;
+	}
+	@supports (height: 100dvh) {
+		--vh: 100dvh;
+	}
+	@supports not (height: 100dvh) {
+		--vh: 100vh;
+	}
 }
 
 :where(html) {
 	font-size: 100%;
 	line-height: 1;
-	-webkit-text-size-adjust: 100%;
-	color-scheme: dark light;
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
+
+	@supports (tab-size: 4) {
+		tab-size: 4;
+	}
+	@supports not (tab-size: 4) {
+		-moz-tab-size: 4;
+		-o-tab-size: 4;
+	}
+	@supports (text-size-adjust: 100%) {
+		text-size-adjust: 100%;
+	}
+	@supports not (text-size-adjust: 100%) {
+		-webkit-text-size-adjust: 100%;
+	}
 }
 
 // <uniquifier>: Use a unique and descriptive class name
@@ -105,13 +127,6 @@
 	all: unset;
 }
 
-input,
-input:matches([type='password'], [type='search']) {
-	-webkit-appearance: textfield;
-	background-color: -apple-system-control-background;
-	color: text;
-}
-
 :target {
 	scroll-margin-block: theme('size.24');
 }
@@ -121,9 +136,19 @@ input:matches([type='password'], [type='search']) {
 }
 
 :focus-visible {
-	outline: 2px solid var(--color-primary-500);
-	outline-offset: -2px;
-	border-radius: inherit;
+	$color-mix: color-mix(
+		in hsl increasing hue,
+		var(--color-primary-500) 50%,
+		var(--color-surface-700)
+	);
+
+	outline: 0.125rem solid var(--color-primary-500);
+	border-radius: theme('borderRadius.sm');
+	background-color: hsl(var(--color-values-primary-500) / 0.125);
+
+	@supports (#{$color-mix}) {
+		color: #{$color-mix};
+	}
 }
 
 ::selection {
@@ -155,16 +180,19 @@ input:matches([type='password'], [type='search']) {
 .svg {
 	&--45 {
 		&:hover,
-		&:focus-visible {
-			svg {
+		&:focus-visible,
+		a:focus-visible {
+			svg,
+			~ svg {
 				transform: scale(1.125) translate3d(0.125rem, -0.125rem, 0);
 			}
 		}
 	}
 }
 
-@supports not (backdrop-filter: none) {
+@supports (backdrop-filter: none) {
 	body > .backdrop-blur-4xl {
+		backdrop-filter: none;
 		box-shadow: 0 0 0 theme('size.4') var(--color-surface-950);
 
 		~ rect {

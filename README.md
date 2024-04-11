@@ -1,4 +1,4 @@
-![Project photo](/public/image.png)
+![Project photo](/public/preview.png)
 
 # About project
 
