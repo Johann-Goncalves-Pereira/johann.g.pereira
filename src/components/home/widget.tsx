@@ -1,6 +1,7 @@
-import { component$ } from '@builder.io/qwik'
+import { component$, useSignal, useTask$ } from '@builder.io/qwik'
 
 import Arrow from '~/components/Svg/arrow'
+import { Kelpie, MeinProjekt, Revex } from '../layout/images/images'
 
 export default component$(
 	({ date, image, href, title, description, stars, labels }: WidgetProps) => {
@@ -12,7 +13,7 @@ export default component$(
 
 		return (
 			<article
-				class='svg--45 relative isolate grid scale-105 gap-4 p-4 text-sm sm:scale-100 sm:grid-cols-[1fr_3fr] [&_a>span]:focus-within:opacity-100 [&_a>span]:hover:opacity-100'
+				class='svg--45 relative isolate grid scale-105 gap-4 p-4 text-sm sm:scale-100 sm:grid-cols-[1fr_3fr] [&_a>span]:focus-within:opacity-100 [&_a>span]:hover:opacity-100 [&_p]:hover:text-surface-700'
 				aria-labelledby={titleToId}
 			>
 				<Wrapper date={date} image={image} title={title} />
@@ -20,7 +21,9 @@ export default component$(
 				<div class='grid flex-1 gap-2'>
 					<Header title={title} titleId={titleToId} href={href} />
 
-					<p>{description}</p>
+					<p class='whitespace-pre-wrap text-surface-700/80 transition-colors'>
+						{description}
+					</p>
 
 					<Footer stars={stars} labels={labels} />
 				</div>

@@ -24,24 +24,31 @@
 			"articles": [
 				{
 					"title": "Frontend Engineer At Reside",
-					"date": "2023 — 2024",
-					"href": "https://reside.com",
-					"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?",
-					"labels": ["Label 1", "Label 2"]
+					"date": "2022 — 2024",
+					"href": "https://resideadmissions.com/",
+					"description": "In my capacity as part of the Reside Admissions platform front-end team, I overhauled the website, transitioning it from a desktop-only format to a responsive design.\n\nI prioritized accessibility features for users with special needs, collaborated closely with the back-end team to enhance API functionality, supported quality assurance efforts by conducting tests, and effectively resolved design and functionality issues. Ultimately, I successfully fulfilled the project's expectations.",
+					"labels": [
+						"React",
+						"Scss",
+						"Accessibility",
+						"Styled Components",
+						"QA",
+						"API"
+					]
 				},
 				{
-					"title": "Developer At easySynergy",
-					"date": "2023 — 2024",
-					"href": "https://easySinergy.com",
-					"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?",
-					"labels": ["Label 1", "Label 2"]
+					"title": "Maintainer Easy Synergy",
+					"date": "2022 — 2022",
+					"href": "https://us.gmedinnovations.com/",
+					"description": "I held a developer position where I played a vital role in maintaining an existing project.\n\nThis encompassed tasks such as updating Elm and its associated packages to current versions, making minor adjustments to the application, and contributing to further development initiatives. Effective communication skills were essential in this role.",
+					"labels": ["Elm", "Css", "Webpack", "Accessibility", "Back-end"]
 				},
 				{
 					"title": "Frontend At Materialize",
-					"date": "2022 — 2023",
-					"href": "https://materializecss.com",
-					"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?",
-					"labels": ["Label 1", "Label 2"]
+					"date": "2021 — 2022",
+					"href": "https://www.materialize.pro/en_us.html",
+					"description": "I spearheaded the development of the Materialize Elm components for the entire platform right from its inception.\n\nAdditionally, I constructed numerous pages using Elm. Throughout this process, I gained valuable insights into web development, honed my communication skills, and became adept at problem-solving.",
+					"labels": ["Elm", "Tailwind", "Typescript", "Scss", "Accessibility"]
 				}
 			],
 			"portfolioLink": {
@@ -52,18 +59,25 @@
 		"experience": {
 			"articles": [
 				{
-					"title": "Frontend Engineer At Reside",
-					"href": "https://reside.com",
-					"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam quidem repellendus repellat architecto earum officia voluptates doloribus excepturi nihil? Sapiente, ipsam?",
-					"labels": ["Label 1", "Label 2"],
-					"image": "https://picsum.photos/1520/840"
+					"title": "Revex - Elm Boilerplate",
+					"href": "https://github.com/Johann-Goncalves-Pereira/Revex/",
+					"description": "Revex stands as an Elm boilerplate, replete with an abundance of functionalities. It seamlessly integrates the ease of Vite, the simplicity of Tailwind + Scss, and the powerful Router Elm-spa, offering a comprehensive toolkit for streamlined development.",
+					"labels": ["Vite", "Elm", "Elm-Spa", "Tailwind", "TypeScript"],
+					"image": "https://picsum.photos/200/300"
 				},
 				{
-					"title": "Developer At easySynergy",
-					"href": "https://easySinergy.com",
-					"description": "I build pixel-perfect, engaging,\nand accessible digital experiences.",
-					"labels": ["Label 1", "Label 2"],
-					"image": "https://picsum.photos/1510/820"
+					"title": "Mein Projekt",
+					"href": "https://github.com/Johann-Goncalves-Pereira/Mein-Projekt",
+					"description": "Embarking on an ambitious endeavor, this expansive project boasts a multitude of frontend pages meticulously tailored with Elm. Distinguished by their diverse themes and builds, these pages showcase a plethora of layouts, elevating the project's complexity and versatility.",
+					"labels": ["Sass", "Elm", "Postcss", "Themes"],
+					"image": "https://picsum.photos/220/300"
+				},
+				{
+					"title": "Kelpie - Uphold",
+					"href": "https://github.com/Johann-Goncalves-Pereira/Kelpie",
+					"description": "Revex stands as an Elm boilerplate, replete with an abundance of functionalities. It seamlessly integrates the ease of Vite, the simplicity of Tailwind + Scss, and the powerful Router Elm-spa, offering a comprehensive toolkit for streamlined development.",
+					"labels": ["Elm", "Sass", "Tailwind", "TypeScript", "Webpack"],
+					"image": "https://picsum.photos/210/300"
 				}
 			],
 			"archiveLink": {

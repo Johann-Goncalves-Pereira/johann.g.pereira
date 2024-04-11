@@ -10,7 +10,7 @@ export default component$(() => {
 	const { articles, portfolioLink } = data.home.about
 	return (
 		<section id='about' aria-label='about'>
-			<header class='first-letter-2 first-letter:float-left first-letter:mr-3 [&_strong]:font-bold'>
+			<header class='first-letter-2 text-surface-700/80 first-letter:float-left first-letter:mr-3 [&_a]:text-opacity-100 [&_strong]:font-bold'>
 				<Description />
 			</header>
 

@@ -27,10 +27,10 @@ export default {
 				table: '4ch 1fr 12ch repeat(2, 1fr)',
 			},
 			width: {
-				dvw: '100dvw',
+				dvw: 'var(--vw)',
 			},
 			height: {
-				dvh: '100dvh',
+				dvh: 'var(--vh)',
 			},
 			transitionDuration: '50ms',
 			transitionProperty: {
