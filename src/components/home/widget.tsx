@@ -1,7 +1,6 @@
-import { component$, useSignal, useTask$ } from '@builder.io/qwik'
+import { component$ } from '@builder.io/qwik'
 
 import Arrow from '~/components/Svg/arrow'
-import { Kelpie, MeinProjekt, Revex } from '../layout/images/images'
 
 export default component$(
 	({ date, image, href, title, description, stars, labels }: WidgetProps) => {
