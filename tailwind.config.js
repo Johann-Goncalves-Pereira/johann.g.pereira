@@ -24,7 +24,7 @@ export default {
 		},
 		extend: {
 			gridTemplateColumns: {
-				table: '4ch 1fr 12ch repeat(2, 1fr)',
+				table: 'var(--table-columns_)',
 			},
 			width: {
 				dvw: 'var(--vw)',

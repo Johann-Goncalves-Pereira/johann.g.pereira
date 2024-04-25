@@ -60,10 +60,14 @@ export default component$(() => {
 				onMouseEnter$={async () => {
 					await mediaPreferenceUpdate$()
 					if (reduce.value) return
+
+					// if (performance.now() < 50) return
+
 					await rectUpdate$()
 				}}
 				onMouseMove$={async ({ x, y }) => {
 					if (reduce.value) return
+
 					await Promise.resolve((rect.x = x))
 					await Promise.resolve((rect.y = y))
 				}}
