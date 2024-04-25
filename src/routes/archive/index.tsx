@@ -1,10 +1,14 @@
 import type { DocumentHead } from '@builder.io/qwik-city'
-import { component$ } from '@builder.io/qwik'
+import { component$, useStylesScoped$ } from '@builder.io/qwik'
+
+import styles from './index.scss?inline'
 
 export default component$(() => {
+	useStylesScoped$(styles)
+
 	return (
 		<>
-			<header class='mx-auto flex w-full max-w-screen-xl flex-col-reverse gap-y-2 px-24 pt-24 capitalize'>
+			<header class='mx-auto flex w-full max-w-screen-xl flex-col-reverse gap-y-2 px-4 pt-24 capitalize md:px-10 lg:px-24'>
 				<h1 class='text-5xl font-bold'>Projects Archive</h1>
 				<nav class='text-lg font-semibold'>
 					<h2>
@@ -13,18 +17,16 @@ export default component$(() => {
 				</nav>
 				{/* {width.value} */}
 			</header>
-			<main class='mx-auto mt-24 w-full max-w-screen-xl px-24 pb-24'>
+			<main class='mx-auto mt-24 w-full max-w-screen-xl px-4 pb-24 md:px-10 lg:px-24'>
 				<table class='flex h-full flex-col gap-y-8 overflow-auto'>
 					<thead>
 						<tr class='relative grid grid-cols-table gap-4 font-medium'>
 							<th>Year</th>
 							<th>Project</th>
-							<th>Made at</th>
-							<th>Built with</th>
-							<th>Link</th>
-							<th class='absolute -bottom-4 left-0 right-0 h-px text-surface-900/50'>
-								<hr />
-							</th>
+							<th class='hidden lg:block'>Made at</th>
+							<th class='hidden lg:block'>Built with</th>
+							<th class='hidden sm:block'>Link</th>
+							<Stroke />
 						</tr>
 					</thead>
 					<tbody class='grid gap-y-8'>
@@ -35,8 +37,8 @@ export default component$(() => {
 							<td>
 								<strong class='font-medium'>Emerson Collective</strong>``
 							</td>
-							<td>Upstatement</td>
-							<td>
+							<td class='hidden lg:block'>Upstatement</td>
+							<td class='hidden lg:block'>
 								<ul class='mt-2 flex cursor-default flex-wrap gap-1 text-xs font-medium capitalize text-primary-500 selection:hidden'>
 									<li class='mr-1 flex items-center rounded-full bg-primary-700/50 px-3 py-1'>
 										React
@@ -52,8 +54,9 @@ export default component$(() => {
 									</li>
 								</ul>
 							</td>
-							<td>
+							<td class='absolute inset-0 col-start-2 opacity-0 sm:static sm:col-start-auto sm:opacity-100'>
 								<a
+									class='block'
 									href='https://emersoncollective.com'
 									target='_blank'
 									rel='noopener noreferrer'
@@ -61,40 +64,7 @@ export default component$(() => {
 									Link
 								</a>
 							</td>
-							<td class='absolute -bottom-4 left-0 right-0 h-px text-surface-900/50'>
-								<hr />
-							</td>
-						</tr>
-						<tr class='relative grid grid-cols-table gap-4'>
-							<td>
-								<time dateTime='2022'>2022</time>
-							</td>
-							<td>
-								<strong class='font-medium'>Emerson Collective</strong>
-							</td>
-							<td>Upstatement</td>
-							<td>
-								<ul class='mt-2 flex cursor-default flex-wrap gap-1 text-xs font-medium capitalize text-primary-500 selection:hidden'>
-									<li class='mr-1 flex items-center rounded-full bg-primary-700/50 px-3 py-1'>
-										Next
-									</li>
-									<li class='mr-1 flex items-center rounded-full bg-primary-700/50 px-3 py-1'>
-										Netlify
-									</li>
-								</ul>
-							</td>
-							<td>
-								<a
-									href='https://emersoncollective.com'
-									target='_blank'
-									rel='noopener noreferrer'
-								>
-									Link
-								</a>
-							</td>
-							<td class='absolute -bottom-4 left-0 right-0 h-px text-surface-900/50'>
-								<hr />
-							</td>
+							<Stroke />
 						</tr>
 					</tbody>
 				</table>
@@ -102,6 +72,12 @@ export default component$(() => {
 		</>
 	)
 })
+
+const Stroke = component$(() => (
+	<td class='absolute -bottom-4 left-0 right-0 h-px text-surface-900/50'>
+		<hr />
+	</td>
+))
 
 export const head: DocumentHead = {
 	title: 'Archive Projects - Johann Pereira',

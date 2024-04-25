@@ -1,0 +1,10 @@
+main {
+	--table-columns_: 4ch 1fr;
+
+	@media (min-width: theme('screens.sm')) {
+		--table-columns_: 4ch 2fr 1fr;
+	}
+	@media (min-width: theme('screens.lg')) {
+		--table-columns_: 4ch 1fr 12ch repeat(2, 1fr);
+	}
+}
