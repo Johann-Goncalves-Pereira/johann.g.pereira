@@ -2,620 +2,132 @@
 
 ## Project Overview
 
-This project is Johann's portfolio site for a Frontend Engineer. It is built with React 19 and
-TanStack Router (file-based routing) with React Compiler optimization. The architecture follows a
-clean separation of concerns and prioritizes polished UI, accessibility, and fast performance.
+This repository is Johann Pereira’s portfolio website. It is built with Qwik + Qwik City,
+server-side rendering, and Vercel Edge deployment support.
 
-**Core Structure:**
+Primary goals:
 
-- `src/routes/` - File-based routing system where file paths map to URL routes
-- `src/pages/` - Page components that handle route-specific logic and layout
-- `src/components/` - Reusable UI components with strict TypeScript contracts
-- `src/layout/` - Layout wrapper components (Root.tsx provides global app shell)
-- `src/hooks/` - Custom React hooks for shared stateful logic
-- `src/utils/` - Pure utility functions and helper modules
-- `src/types/` - TypeScript type definitions and ts-reset configuration
+- Keep the site fast and lightweight
+- Preserve polished visual design and accessibility
+- Prefer simple, maintainable code over abstractions
 
-### Component / Hook Separation Mandate
+## Core Architecture
 
-All non-trivial logic MUST live outside of React component render functions.
+Important directories and files:
 
-Rules:
+- `src/routes/` - Qwik City file-based routes (`index.tsx`, `archive/index.tsx`, `404.tsx`, `layout.tsx`)
+- `src/components/` - UI components grouped by feature (`home`, `layout`, `Svg`)
+- `src/data.json` - Main content source for portfolio sections
+- `src/components/home/about/description.mdx` - About section long-form content
+- `src/components/layout/footer/footer.mdx` - Footer long-form content
+- `src/root.tsx` - App shell (`QwikCityProvider`, `RouterOutlet`, `ServiceWorkerRegister`)
+- `src/root.scss` - Global styles and CSS variables
+- `adapters/vercel-edge/vite.config.ts` - Server build config for Vercel Edge
 
-- UI components (files under `src/components/` and `src/pages/`) should be PRESENTATION ONLY.
-- State management, side-effects, derived calculations, input validation, persistence, timers,
-  keyboard handlers, and domain algorithms belong in custom hooks under `src/hooks/` or pure
-  functions under `src/utils/`.
-- Components may only:
-  - Receive props
-  - Call hooks to obtain already-prepared data & handlers
-  - Render JSX
-  - Contain minimal event bridging (e.g. mapping a button click to a hook handler)
-- No inline business logic, mutation chains, or multi-step computations directly inside JSX
-  callbacks.
-- If a component grows beyond a few lines of straightforward prop plumbing, extract a hook (e.g.
-  `useThing()`).
+## Qwik / Qwik City Conventions
 
-Type Safety & Performance Alignment:
+- Use Qwik primitives (`component$`, `$`, `useSignal`, `useStore`, `useComputed$`, etc.) instead of React patterns.
+- Keep route behavior in `src/routes/*` and reusable UI in `src/components/*`.
+- Prefer Qwik event handlers (`onClick$`, `onMouseMove$`, etc.) and QRL-friendly functions.
+- Keep serialization in mind when modeling state and closures.
+- Preserve route loader and request handler patterns (`routeLoader$`, `onGet`) where already used.
 
-- Hooks must export precise return object shapes (avoid `any`, prefer readonly where possible).
-- Derive complex values with `useMemo` and stable callbacks with `useCallback` inside the hook;
-  components should never need additional memoization layers for those values.
-- Keep hooks pure in their exposed contract: side-effects (storage, network) happen internally;
-  components receive stable references.
-- Maintain single source of truth types in `src/types/`; hooks derive with `ReturnType` /
-  `Parameters` helpers when needed.
+### Routing Rules
 
-Enforcement Guidance:
+- Routes are file-based via Qwik City under `src/routes/`.
+- Do not introduce non-Qwik router APIs.
+- Keep layout behavior in `src/routes/layout.tsx` unless a clear shared component extraction is needed.
 
-- During reviews, migrate any logic found in a component into a hook before merging.
-- New features start with a hook API sketch (inputs, outputs, error modes) prior to adding UI.
-- Favor composition: many small hooks are better than one large monolith.
+## Data and Content Rules
 
-Example Pattern:
+- Treat `src/data.json` as the canonical source for profile/project metadata.
+- For rich text sections, use the existing MDX files instead of hardcoding long prose in TSX.
+- Keep copy updates minimal and consistent with existing tone.
 
-```typescript
-// Hook (logic)
-function useWidget(id: string) {
-  const { data, error } = useQuery({ /* ... */ })
-  const toggle = useCallback(() => {/* ... */}, [])
-  const derived = useMemo(() => compute(data), [data])
-  return { derived, error, toggle }
-}
+## Styling and Design System
 
-// Component (presentation)
-function Widget({ id }: { id: string }) {
-  const { derived, error, toggle } = useWidget(id)
-  if (error) return <ErrorView />
-  return <button onClick={toggle}>{derived.label}</button>
-}
-```
+- Use Tailwind utility classes in TSX for component-level styling.
+- Reuse existing color tokens and CSS variables defined in `tailwind.config.js` and `src/root.scss`.
+- Avoid introducing arbitrary hardcoded colors, shadows, or typography values when tokens already exist.
+- Keep SCSS changes scoped and minimal; avoid adding new global overrides without strong reason.
 
-This mandate complements existing strict typing, memoization, and performance directives without
-replacing them.
+## TypeScript and Imports
 
-**Key Architectural Decisions:**
+- Keep strict TypeScript compatibility (`strict: true` in `tsconfig.json`).
+- Use path alias imports (`~/*`) for internal modules when appropriate.
+- Prefer precise types over `any`; if using `any`, constrain scope and justify via code clarity.
+- Keep JSON imports and inferred types consistent with current patterns.
 
-- **React Compiler Integration**: Enabled only in production to maintain HMR performance while
-  optimizing bundle efficiency
-- **File-Based Routing**: TanStack Router auto-generates route trees from file structure,
-  eliminating manual route configuration
-- **ts-reset Enhancement**: Leverages @total-typescript/ts-reset to improve built-in type
-  definitions and reduce common TypeScript friction
-- **Rolldown Integration**: Uses rolldown-vite for enhanced build performance with Rust-powered
-  bundling
+## Linting and Formatting
 
-## Critical Developer Workflows
-
-### Core Development Commands
+- ESLint config is in `.eslintrc.cjs` with Qwik + TypeScript rules.
+- Prettier config is in `.prettierrc` and enforces:
+  - tabs
+  - single quotes
+  - no semicolons
+  - print width 80
+- Run these before finishing significant edits:
 
 ```bash
-pnpm dev              # Development server with HMR (React Compiler disabled)
-pnpm dev:compiler     # Development with React Compiler enabled for testing
-pnpm build           # Production build with TypeScript compilation + Vite bundling
-pnpm preview         # Serve production build locally for testing
-pnpm lint            # ESLint with React Compiler rules + TypeScript strict mode
-pnpm format          # Prettier with import sorting + Tailwind class ordering
+pnpm lint
+pnpm fmt.check
 ```
 
-### Environment Setup Requirements
+## Build / Run Commands (pnpm standard)
 
-- **Node.js**: Modern version supporting ES2022+ features
-- **PNPM**: Required package manager (not npm/yarn) due to specific overrides
-- **TypeScript**: Strict mode configuration with comprehensive linting
-- **Development Tools**: React Scan automatically enabled in dev mode for performance debugging
+Use pnpm as the default package manager for agent tasks in this repository.
 
-### Testing & Validation Workflow
-
-1. Run `pnpm lint` before commits to catch React Compiler violations
-2. Use `pnpm dev:compiler` periodically to test production-like compilation
-3. Monitor React Scan output in browser devtools for performance regressions
-4. Validate builds with `pnpm build && pnpm preview` before deployment
-
-## Advanced TypeScript & Type Safety Conventions
-
-This project enforces **super strict** TypeScript patterns for maximum type safety and
-maintainability:
-
-### Single Source of Truth Patterns
-
-```typescript
-// ✅ Derive types from constants to maintain single source of truth
-const THEME_MODES = {
-	light: 'light',
-	dark: 'dark',
-	system: 'system',
-} as const
-
-type ThemeMode = (typeof THEME_MODES)[keyof typeof THEME_MODES]
-
-// ✅ Extract union types from object keys
-const API_ENDPOINTS = {
-	users: '/api/users',
-	posts: '/api/posts',
-	comments: '/api/comments',
-} as const
-
-type EndpointKey = keyof typeof API_ENDPOINTS
-type EndpointUrl = (typeof API_ENDPOINTS)[EndpointKey]
+```bash
+pnpm install
+pnpm dev
+pnpm build
+pnpm preview
+pnpm lint
+pnpm fmt
+pnpm fmt.check
+pnpm build.types
 ```
 
-### Utility Types for Type Transformation
+Notes:
 
-```typescript
-// ✅ Use utility types for creating variations of core types
-interface User {
-	id: string
-	name: string
-	email: string
-	avatar?: string
-}
+- `pnpm build` runs the Qwik production build.
+- `pnpm build.server` uses `adapters/vercel-edge/vite.config.ts`.
+- `pnpm preview` is the local production-like smoke test.
 
-type CreateUserRequest = Omit<User, 'id'>
-type UserProfile = Pick<User, 'name' | 'avatar'>
-type OptionalUser = Partial<User>
-type RequiredUser = Required<User>
-```
+## Change Strategy for Agents
 
-### Advanced Type Extraction Patterns
+- Prefer targeted edits over broad refactors.
+- Do not migrate architecture, folder structure, or framework unless explicitly requested.
+- Preserve existing naming/style conventions in touched files.
+- Avoid adding dependencies unless there is a clear need.
+- If a command/workflow in docs conflicts with `package.json`, trust `package.json`.
 
-```typescript
-// ✅ Extract function parameter and return types
-function fetchUserData(id: string, options: RequestInit): Promise<User> {
-	return fetch(`/api/users/${id}`, options).then(r => r.json())
-}
+## Validation Checklist (before handoff)
 
-type FetchUserParams = Parameters<typeof fetchUserData>
-type FetchUserReturn = ReturnType<typeof fetchUserData>
-type ResolvedUser = Awaited<FetchUserReturn>
+For code changes, run the narrowest useful checks first, then broader checks:
 
-// ✅ Use infer for complex type extraction
-type ExtractArrayType<T> = T extends (infer U)[] ? U : never
-type ExtractPromiseType<T> = T extends Promise<infer U> ? U : never
+1. Type or lint check relevant to touched files
+2. `pnpm lint`
+3. `pnpm build` for build-impacting changes
+4. `pnpm preview` only when behavior/output verification is needed
 
-// ✅ Extract instance types from classes/constructors
-class ApiClient {
-	constructor(public baseUrl: string) {}
-}
-type ApiClientInstance = InstanceType<typeof ApiClient>
-```
+If a check fails due to pre-existing unrelated issues, call it out explicitly in the summary.
 
-### Strictness Configuration & ts-reset Integration
+## Copilot Instruction Best Practices
 
-- **Ultra-strict tsconfig**: Enhanced with `exactOptionalPropertyTypes`, `noImplicitReturns`,
-  `noUncheckedIndexedAccess`
-- **ts-reset Integration**: `@total-typescript/ts-reset` improves Array methods, JSON parsing, and
-  other built-in type accuracy
-- **Verbatim Module Syntax**: Ensures import/export statements are preserved exactly for better
-  tooling support
-- **No Unchecked Side Effects**: `noUncheckedSideEffectImports` prevents accidental side-effect
-  imports
-- **Consistent Type Imports**: ESLint enforces `import type` for type-only imports
+These rules are intentionally concise and repository-specific:
 
-### React Performance & Memoization Patterns
+- Follow non-obvious project conventions first (Qwik routing, data files, tokens, scripts).
+- Avoid conflicting guidance with user-level/personal instructions.
+- Keep outputs practical and implementation-focused.
+- Search the repository only when these instructions are incomplete or contradicted by current code.
 
-```typescript
-// ✅ Use React.memo for component memoization with proper comparison
-const UserCard = memo(({ user, onEdit }: UserCardProps) => {
-  return (
-    <div>
-      <h3>{user.name}</h3>
-      <button onClick={() => onEdit(user.id)}>Edit</button>
-    </div>
-  );
-});
+## Optional Future Split (Path-Specific Instructions)
 
-// ✅ Custom comparison function for complex props
-const ExpensiveComponent = memo(
-  ({ data, config }: Props) => {
-    // Component implementation
-  },
-  (prevProps, nextProps) => {
-    return (
-      prevProps.data.id === nextProps.data.id &&
-      prevProps.config.theme === nextProps.config.theme
-    );
-  }
-);
+If instruction granularity is needed later, add files under `.github/instructions/` with `applyTo` globs, for example:
 
-// ✅ useMemo for expensive calculations
-function DataTable({ items, filters }: DataTableProps) {
-  const filteredItems = useMemo(() => {
-    return items.filter((item) =>
-      filters.every((filter) => filter.predicate(item))
-    );
-  }, [items, filters]);
+- `qwik-routes.instructions.md` for `src/routes/**/*.tsx`
+- `styles.instructions.md` for `src/**/*.{scss,css,tsx}`
+- `content.instructions.md` for `src/**/*.mdx,src/data.json`
 
-  const sortedItems = useMemo(() => {
-    return [...filteredItems].sort((a, b) => a.name.localeCompare(b.name));
-  }, [filteredItems]);
-
-  return <div>{/* render sortedItems */}</div>;
-}
-
-// ✅ useCallback for stable function references
-function TodoList({ todos, onToggle, onDelete }: TodoListProps) {
-  const handleToggle = useCallback(
-    (id: string) => {
-      onToggle(id);
-    },
-    [onToggle]
-  );
-
-  const handleDelete = useCallback(
-    (id: string) => {
-      onDelete(id);
-    },
-    [onDelete]
-  );
-
-  return (
-    <div>
-      {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          onToggle={handleToggle}
-          onDelete={handleDelete}
-        />
-      ))}
-    </div>
-  );
-}
-
-// ✅ React Compiler compatible patterns (avoid manual memoization when possible)
-function AutoOptimizedComponent({ user, settings }: Props) {
-  // React Compiler will automatically optimize this
-  const userProfile = {
-    name: user.name,
-    avatar: user.avatar,
-    preferences: settings.preferences,
-  };
-
-  // Compiler handles memoization automatically
-  const displayName = user.displayName || user.name;
-
-  return <UserProfile profile={userProfile} name={displayName} />;
-}
-```
-
-### Memoization Best Practices & Anti-patterns
-
-```typescript
-// ❌ Don't memoize everything - adds overhead
-const OverMemoizedComponent = memo(() => {
-  return <div>Simple static content</div>;
-});
-
-// ✅ Only memoize when you have expensive renders or frequent re-renders
-const ExpensiveChart = memo(({ data }: ChartProps) => {
-  return <ComplexVisualization data={data} />;
-});
-
-// ❌ Don't create objects in render without memoization
-function BadComponent({ userId }: Props) {
-  return <UserProfile config={{ theme: "dark", userId }} />; // New object every render
-}
-
-// ✅ Memoize object creation or move outside component
-function GoodComponent({ userId }: Props) {
-  const config = useMemo(
-    () => ({
-      theme: "dark" as const,
-      userId,
-    }),
-    [userId]
-  );
-
-  return <UserProfile config={config} />;
-}
-
-// ✅ Or use React Compiler's automatic optimization
-function CompilerOptimizedComponent({ userId }: Props) {
-  // React Compiler automatically memoizes this object
-  const config = { theme: "dark" as const, userId };
-  return <UserProfile config={config} />;
-}
-```
-
-### Performance Rules Enforcement
-
-The ESLint configuration enforces several performance-critical patterns:
-
-- **Type Imports**: `@typescript-eslint/consistent-type-imports` ensures type-only imports use
-  `import type`
-- **React Keys**: `react/jsx-key` requires keys in list items to prevent reconciliation issues
-- **Function Binding**: `react/jsx-no-bind` warns about inline function creation in JSX
-- **Context Values**: `react/jsx-no-constructed-context-values` prevents object recreation in
-  Context
-- **Hook Dependencies**: `react-hooks/exhaustive-deps` ensures complete dependency arrays
-- **Unnecessary Fragments**: `react/jsx-no-useless-fragment` removes performance overhead
-- **Array Index Keys**: `react/no-array-index-key` warns about unstable keys
-
-## Code Quality and Documentation Standards
-
-### Readability Conventions
-
-- **No Semicolons**: Consistent omission across the codebase (`semi: false`)
-- **Single Quotes**: For all string literals and JSX attributes (`singleQuote: true`)
-- **Tab Indentation**: 2-space equivalent tabs for consistent formatting (`useTabs: true`)
-- **80 Character Line Limit**: Enforced via Prettier for optimal code review readability
-- **Import Ordering**: Automatic sorting - React → Third-party → Path aliases (@/) → Relative
-  imports
-
-- **Styling**: Use Tailwind CSS utility classes for component and page styles. Prefer composing
-  styles with Tailwind in JSX/TSX files and keep custom CSS to a minimum. Allowed exceptions: global
-  layer utilities (e.g. `@layer components`), font-face declarations, reset styles, and
-  runtime-driven CSS variables (accent and theme variables). When a design requires complex,
-  reusable patterns, extract them into Tailwind component classes or design tokens rather than
-  ad-hoc CSS files.
-
-### JSDoc Documentation Requirements
-
-````typescript
-/**
- * Fetches user data with caching and error handling
- * @param userId - Unique identifier for the user
- * @param options - Configuration object for the request
- * @param options.cache - Whether to use cached data if available
- * @param options.timeout - Request timeout in milliseconds
- * @returns Promise that resolves to user data or throws ApiError
- * @throws {ApiError} When the API request fails or user is not found
- * @example
- * ```typescript
- * const user = await fetchUser('123', { cache: true, timeout: 5000 })
- * ```
- */
-async function fetchUser(
-	userId: string,
-	options: { cache?: boolean; timeout?: number },
-): Promise<User> {
-	// Implementation
-}
-````
-
-### Error & Edge Case Handling
-
-- **Exhaustive Error Types**: Define specific error classes for different failure modes
-- **Result Type Pattern**: Consider using Result<T, E> types for operations that can fail
-- **Null Safety**: Leverage strict null checks and optional chaining for all potentially undefined
-  values
-- **Input Validation**: Validate all external inputs (API responses, user input, environment
-  variables)
-
-```typescript
-// ✅ Comprehensive error handling with specific types
-class ValidationError extends Error {
-	constructor(
-		public field: string,
-		message: string,
-	) {
-		super(message)
-		this.name = 'ValidationError'
-	}
-}
-
-function validateEmail(email: string): email is string {
-	if (!email) throw new ValidationError('email', 'Email is required')
-	if (!email.includes('@')) throw new ValidationError('email', 'Invalid email format')
-	return true
-}
-```
-
-## Project Patterns & Integrations
-
-### Effect Integration & Functional Error Management
-
-We use the `effect` library (v3) for structured, typed, and composable side‑effects in hooks and
-utilities. Key principles:
-
-**Two Error Channels**
-
-- Success channel carries domain values (e.g. `string[]` dictionary words).
-- Error channel carries _expected_ (recoverable, user-displayable) or _unexpected_ (programmer /
-  infra) tagged errors.
-
-**Tagged Errors**
-
-- Domain errors extend `Data.TaggedError('Tag')<Shape>` in `src/types/effectErrors.ts`.
-- Expected errors: `DictionaryNetworkError`, `DictionaryParseError`, `DictionaryCacheError`,
-  `StorageUnavailable`, etc.
-- Unexpected errors wrapped via `toUnexpected(origin, cause)` producing `UnexpectedError`.
-
-**Patterns Implemented**
-
-- Fallback: `Effect.catchAll(() => Effect.succeed(fallbackValue))` (dictionary falls back to minimal
-  word list).
-- Matching: Prefer `Effect.catchTags({ TagName: handler })` when discriminating specific expected
-  errors (see storage examples—may be expanded later).
-- Retrying: Network fetch uses `Effect.retry({ schedule: Schedule.recurs(2) })` for transient
-  failures.
-- Timing Out: For future network additions, wrap with `Effect.timeout(Duration.seconds(5))` then
-  provide graceful fallback.
-- Sandboxing / Isolation: Use `Effect.either(effect)` (preferred) or `Effect.sandbox(effect)` to
-  probe cache without aborting pipeline.
-- Error Accumulation: For multi‑stage validations, accumulate with `Effect.validateAll` (future
-  expansion; currently single‑stage parsing).
-- Parallel vs Sequential: Use `Effect.all([...effects], { concurrency: 'unbounded' })` for
-  independent operations (not yet required). Keep parsing sequential where ordering matters.
-- Yieldable Errors: When exposing errors to UI, run the Effect inside hook `queryFn` (React Query)
-  and surface `query.error`.
-
-**React Hook Usage**
-
-- Wrap side effects in `Effect.runFork` inside `useEffect` for fire‑and‑forget (e.g. persisting
-  score).
-- For synchronous initial state: `useState(() => Effect.runSync(effect))` (ensure a pure fallback
-  path to avoid throwing during render).
-- Never run long‑running or retry loops directly in render; compose in Effect then execute outside.
-
-**Design Rules**
-
-1. Keep pure helpers pure. Only wrap in `Effect` where IO, randomness, time, or failure can occur
-   (network, localStorage, compression, animation start/stop).
-2. Expose an Effect API AND (optionally) a legacy Promise API while migrating. New code prefers
-   `Effect`.
-3. Always provide a graceful fallback for user‑visible operations (dictionary, accent load, score
-   load) so UI stays responsive.
-4. Type all effect return values precisely: `Effect.Effect<A, E>` where `E` is a union of tagged
-   errors (avoid `any`).
-5. Keep errors serializable (simple field types) for potential telemetry.
-
-**Snippet Example**
-
-```ts
-// Build German dictionary with retry + fallback
-export const buildGermanDictionaryEffect = (
-	length: number,
-): Effect.Effect<
-	string[],
-	DictionaryNetworkError | DictionaryParseError | DictionaryCacheError | UnexpectedError
-> =>
-	Effect.gen(function* () {
-		const cacheEither = yield* Effect.either(loadCacheEffect(length))
-		if (cacheEither._tag === 'Right') return cacheEither.right
-		const cacheOk = yield* shouldCacheEffect(GERMAN_DICTIONARY_URL).pipe(
-			Effect.catchAll(() => Effect.succeed(true)),
-		)
-		const raw = yield* fetchRawDictionaryEffect(GERMAN_DICTIONARY_URL).pipe(
-			Effect.retry({ schedule: Schedule.recurs(2) }),
-		)
-		const filtered = yield* parseAndFilterEffect(raw, length)
-		if (!filtered.length) return FALLBACK_WORDS
-		if (cacheOk)
-			yield* storeCacheEffect(filtered, length, GERMAN_DICTIONARY_URL).pipe(Effect.ignore)
-		return filtered
-	}).pipe(Effect.catchAll(() => Effect.succeed(FALLBACK_WORDS)))
-```
-
-**When Adding New Logic**
-
-- Identify impure boundaries → wrap in `Effect.try` / `Effect.tryPromise`.
-- Introduce tagged errors for each distinct failure mode (validation, network, parse, quota).
-- Provide a fallback early if user experience depends on the result.
-- Prefer composition over nesting: break pipeline into named Effects (e.g. `fetchRawEffect`,
-  `parseEffect`, `storeEffect`).
-- Document the contract (Inputs / Outputs / Error Tags / Fallback) above new Effect APIs.
-
-This section complements existing error handling; components remain presentation-only and never
-orchestrate failure logic directly.
-
-### File-Based Routing Architecture
-
-- **Route Definition**: Create files in `src/routes/` that mirror URL structure
-- **Auto-Generated Route Tree**: Never manually edit `src/routeTree.gen.ts` - it's automatically
-  maintained
-- **Layout Composition**: Root layout in `__root.tsx` provides app shell with `<Outlet />` for child
-  routes
-- **Route Components**: Export `Route` objects using `createFileRoute()` or `createRootRoute()`
-
-### Path Alias System
-
-```typescript
-// ✅ Always use path aliases for internal imports
-import UserProfile from "@components/UserProfile";
-import { useAuth } from "@hooks/useAuth";
-import { formatDate } from "@utils/date";
-import LovePage from "@pages/Love";
-
-// ❌ Never use relative imports for internal modules
-import UserProfile from "../../components/UserProfile";
-```
-
-### React Compiler Integration Pattern
-
-- **Development Mode**: Compiler disabled to preserve HMR and fast refresh
-- **Production Mode**: Compiler enabled for automatic optimization and memoization
-- **ESLint Integration**: `eslint-plugin-react-compiler` enforces compiler-compatible patterns
-- **Testing Strategy**: Use `pnpm dev:compiler` to validate compiler compatibility during
-  development
-
-### Performance Monitoring Integration
-
-- **React Scan**: Automatically enabled in development for real-time performance insights
-- **Component Re-render Tracking**: Monitor unnecessary re-renders via browser devtools
-- **Build Analysis**: Rolldown provides detailed bundle analysis and optimization reports
-
-### Type-Safe Component Patterns
-
-```typescript
-// ✅ Proper component typing with strict interfaces
-interface UserCardProps {
-  readonly user: {
-    readonly id: string;
-    readonly name: string;
-    readonly email: string;
-    readonly avatar?: string;
-  };
-  readonly onEdit: (userId: string) => void;
-  readonly isSelected?: boolean;
-}
-
-// ✅ Component with proper memoization and error boundaries
-const UserCard = memo<UserCardProps>(({ user, onEdit, isSelected = false }) => {
-  const handleEdit = useCallback(() => {
-    onEdit(user.id);
-  }, [onEdit, user.id]);
-
-  return (
-    <div className={`user-card ${isSelected ? "selected" : ""}`}>
-      <img src={user.avatar ?? "/default-avatar.png"} alt={user.name} />
-      <h3>{user.name}</h3>
-      <p>{user.email}</p>
-      <button type='button' onClick={handleEdit}>
-        Edit User
-      </button>
-    </div>
-  );
-});
-
-UserCard.displayName = "UserCard";
-
-// ✅ Custom hook with proper typing and memoization
-function useUserData(userId: string) {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  const fetchUser = useCallback(async (id: string) => {
-    try {
-      setLoading(true);
-      setError(null);
-      const response = await fetch(`/api/users/${id}`);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch user: ${response.statusText}`);
-      }
-      const userData = (await response.json()) as User;
-      setUser(userData);
-    } catch (err) {
-      setError(err instanceof Error ? err : new Error("Unknown error"));
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (userId) {
-      void fetchUser(userId);
-    }
-  }, [userId, fetchUser]);
-
-  return useMemo(
-    () => ({
-      user,
-      loading,
-      error,
-      refetch: () => fetchUser(userId),
-    }),
-    [user, loading, error, fetchUser, userId]
-  );
-}
-```
-
-### Key Reference Files
-
-- `src/routes/__root.tsx` - Root route definition and layout composition
-- `src/layout/Root.tsx` - Main app layout with router outlet
-- `vite.config.ts` - Build configuration with conditional React Compiler
-- `eslint.config.js` - Comprehensive linting rules with React Compiler integration
-- `tsconfig.app.json` - Strict TypeScript configuration with path aliases
+Keep repository-wide policy in this file and place specialized rules in path-scoped files.
