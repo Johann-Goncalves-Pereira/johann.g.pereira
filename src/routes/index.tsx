@@ -10,9 +10,9 @@ export default component$(() => {
 	const currentSection = useSignal('about')
 
 	const updateObserver$ = $(async () => {
-		const observer = new IntersectionObserver(async entries => {
-			entries.forEach(
-				entry => {
+		const observer = new IntersectionObserver(
+			async entries => {
+				entries.forEach(entry => {
 					if (
 						!entry.isIntersecting &&
 						entry.target.id === 'projects' &&
@@ -20,10 +20,10 @@ export default component$(() => {
 					)
 						currentSection.value = 'experience'
 					if (entry.isIntersecting) currentSection.value = entry.target.id
-				},
-				{ rootMargin: '-96px' },
-			)
-		})
+				})
+			},
+			{ rootMargin: '-96px' },
+		)
 		return observer
 	})
 

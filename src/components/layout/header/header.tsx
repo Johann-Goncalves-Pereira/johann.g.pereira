@@ -1,7 +1,7 @@
 import { component$, useStylesScoped$ } from '@builder.io/qwik'
 import { twMerge } from 'tailwind-merge'
 
-import { CodePen, GitHub, Twitter } from '~/components/Svg/social'
+import { CodePen, GitHub, Medium } from '~/components/Svg/social'
 import styles from './header.scss?inline'
 import data from '~/data.json'
 
@@ -68,7 +68,7 @@ const Social = component$(({ socials }: SocialProps) => (
 					<span class='sr-only'>{title}</span>
 					{icon === 'github' && <GitHub />}
 					{icon === 'linkedin' && <CodePen />}
-					{icon === 'twitter' && <Twitter />}
+					{icon === 'medium' && <Medium />}
 				</a>
 			)
 		})}
