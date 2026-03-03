@@ -26,7 +26,7 @@ export const RouterHead = component$(() => {
 				crossOrigin='anonymous'
 			/>
 			<link
-				href='https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap'
+				href='https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap'
 				rel='stylesheet'
 			/>
 
