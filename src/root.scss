@@ -11,7 +11,7 @@
 
 :root {
 	@function hsl($h, $s, $l) {
-		@return unquote('#{$h} #{$s} #{$l}');
+		@return #{$h} #{$s} #{$l};
 	}
 
 	@mixin color-values($name, $h, $s, $l) {
