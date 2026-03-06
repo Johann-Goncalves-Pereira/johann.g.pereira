@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 
-import Arrow from '~/components/Svg/arrow'
+import Arrow from '~/components/icons/Arrow'
 
 export default component$(
 	({

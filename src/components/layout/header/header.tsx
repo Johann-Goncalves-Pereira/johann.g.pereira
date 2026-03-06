@@ -1,9 +1,23 @@
 import { component$, useStylesScoped$ } from '@builder.io/qwik'
 import { twMerge } from 'tailwind-merge'
 
-import { CodePen, GitHub, Medium } from '~/components/Svg/social'
+import AtSign from '~/components/icons/AtSign'
+import GitHub from '~/components/icons/GitHub'
+import Instagram from '~/components/icons/Instagram'
+import LinkedIn from '~/components/icons/LinkedIn'
+import Medium from '~/components/icons/Medium'
+import UpWork from '~/components/icons/UpWork'
 import data from '~/data.json'
 import styles from './header.scss?inline'
+
+const ICONS: Record<string, any> = {
+	AtSign,
+	GitHub,
+	Medium,
+	UpWork,
+	LinkedIn,
+	Instagram,
+}
 
 export default component$(({ section }: HeaderProps) => {
 	useStylesScoped$(styles)
@@ -11,7 +25,7 @@ export default component$(({ section }: HeaderProps) => {
 		data.home.header
 
 	return (
-		<header class='-z-10'>
+		<header class='z-10'>
 			<Titles title={title} subtitle={subtitle} description={description} />
 			<NavSection section={section} sections={navSections} />
 			<Social socials={socials} />
@@ -53,22 +67,19 @@ export const NavSection = component$((props: NavSectionProps) => (
 
 const Social = component$(({ socials }: SocialProps) => (
 	<nav class='pointer-events-auto mt-auto flex -translate-x-2 translate-y-2 pt-12'>
-		{socials.map(({ title, href }) => {
-			const icon = title.toLowerCase()
+		{socials.map(({ label, href, Icon }) => {
+			const IconComponent = ICONS[Icon]
 			return (
 				<a
-					class='block p-2 opacity-75 transition-opacity hover:opacity-100 focus-visible:opacity-100'
+					class='p-2 opacity-75 transition-opacity last-of-type:pt-4 hover:opacity-100 focus-visible:opacity-100'
 					href={href}
 					target='_blank'
 					rel='noreferrer noopener'
-					aria-label={`${title} (opens in a new tab)`}
-					title={title}
-					key={title}
+					aria-label={`${label} (opens in a new tab)`}
+					title={label}
+					key={label}
 				>
-					<span class='sr-only'>{title}</span>
-					{icon === 'github' && <GitHub />}
-					{icon === 'linkedin' && <CodePen />}
-					{icon === 'medium' && <Medium />}
+					{IconComponent ? <IconComponent class='h-min w-6' /> : null}
 				</a>
 			)
 		})}
@@ -91,5 +102,5 @@ interface NavSectionProps {
 }
 
 interface SocialProps {
-	socials: { title: string; href: string }[]
+	socials: { href: string; label: string; Icon: string }[]
 }
