@@ -26,7 +26,7 @@ export const RouterHead = component$(() => {
 				crossOrigin='anonymous'
 			/>
 			<link
-				href='https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap'
+				href='https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap'
 				rel='stylesheet'
 			/>
 
@@ -37,10 +37,10 @@ export const RouterHead = component$(() => {
 				<link key={l.key} {...l} />
 			))}
 			{head.styles.map(s => (
-				<style key={s.key} {...s.props} dangerouslySetInnerHTML={s.style} />
+				<style key={s.key} {...s.props} />
 			))}
 			{head.scripts.map(s => (
-				<script key={s.key} {...s.props} dangerouslySetInnerHTML={s.script} />
+				<script key={s.key} {...s.props} />
 			))}
 		</>
 	)

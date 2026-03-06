@@ -1,27 +1,66 @@
 {
 	"home": {
 		"header": {
-			"title": "Johann Pereira",
+			"title": "Johann G. Pereira",
 			"subtitle": "Frontend Engineer",
-			"description": "I build pixel-perfect, engaging,\nand accessible digital experiences.",
+			"description": "I build engaging and accessible\n digital websites and apps.",
 			"navSections": ["about", "experience", "projects"],
 			"socials": [
 				{
-					"title": "GitHub",
-					"href": "https://github.com"
+					"href": "mailto:johann.gp.work@pm.me",
+					"label": "Send email to johann.gp.work@pm.me",
+					"Icon": "AtSign"
 				},
 				{
-					"title": "Linkedin",
-					"href": "https://www.linkedin.com"
+					"href": "https://github.com/Johann-Goncalves-Pereira",
+					"label": "GitHub Profile",
+					"Icon": "GitHub"
 				},
 				{
-					"title": "Twitter",
-					"href": "https://twitter.com"
+					"href": "https://medium.com/@johann.gon.pereira",
+					"label": "Medium Profile",
+					"Icon": "Medium"
+				},
+				{
+					"href": "https://www.instagram.com/johanngon_/",
+					"label": "Instagram Profile",
+					"Icon": "Instagram"
+				},
+
+				{
+					"href": "https://www.linkedin.com/in/johann-pereira-a798961b3/",
+					"label": "LinkedIn Profile",
+					"Icon": "LinkedIn"
+				},
+
+				{
+					"href": "https://www.upwork.com/freelancers/~011d31917fa3d87f28",
+					"label": "UpWork Profile",
+					"Icon": "UpWork"
 				}
 			]
 		},
-		"about": {
+		"experience": {
 			"articles": [
+				{
+					"title": "Senior Software Engineer At Materialize",
+					"date": "2024 — Present",
+					"href": "https://www.materialize.pro/en_us.html",
+					"description": "I returned to Materialize as a Senior Software Engineer in a software factory environment.\n\nOver the past year, I’ve spearheaded critical projects for a diverse range of clients, including Hoop, Psiuapp, Truss, and Apassul.",
+					"labels": [
+						"React",
+						"React Native",
+						"TypeScript",
+						"Elm",
+						"Scss",
+						"Qwik",
+						"Tailwind",
+						"QA",
+						"API",
+						"MongoDB",
+						"Node.js"
+					]
+				},
 				{
 					"title": "Frontend Engineer At Reside",
 					"date": "2022 — 2024",
@@ -37,9 +76,15 @@
 					]
 				},
 				{
+					"title": "Frontend Engineer At WeON",
+					"date": "2022 — 2023",
+					"href": "https://weon.com.br/",
+					"description": "I served as a Frontend Engineer. Improving the user experience of the platform, I implemented new features and resolved bugs. I also contributed to the development of a new design system for the company, which enhanced the consistency and efficiency of our development process.",
+					"labels": ["Vue 2", "Vue 3", "TypeScript", "CSS"]
+				},
+				{
 					"title": "Maintainer Easy Synergy",
 					"date": "2022 — 2022",
-					"href": "https://us.gmedinnovations.com/",
 					"description": "I held a developer position where I played a vital role in maintaining an existing project.\n\nThis encompassed tasks such as updating Elm and its associated packages to current versions, making minor adjustments to the application, and contributing to further development initiatives. Effective communication skills were essential in this role.",
 					"labels": ["Elm", "Css", "Webpack", "Accessibility", "Back-end"]
 				},
@@ -56,48 +101,132 @@
 				"href": "/johann.pdf"
 			}
 		},
-		"experience": {
+		"projects": {
 			"articles": [
+				{
+					"title": "Dary",
+					"href": "https://github.com/Johann-Goncalves-Pereira/dary",
+					"description": "Your private, local-first daily habits diary.\n\nDary is designed to help you show up every day with as little friction as possible. Log your progress, record voice notes, and build streaks—all while keeping your data 100% private and on your device.",
+					"aspectRatio": "8/18",
+					"labels": [
+						"React Native",
+						"Expo",
+						"Zustand",
+						"Tailwind/Tailnative",
+						"TypeScript"
+					],
+					"image": "https://github.com/user-attachments/assets/42307132-1f20-40dc-a8c6-fab4f46d9596",
+					"time": "2026"
+				},
+				{
+					"title": "Hoopr",
+					"href": "https://hoopr.app/",
+					"description": "The Future of Basketball Recruitment\n\nConnect with verified professionals, discover talent instantly, and close deals faster than ever before.",
+					"labels": ["React", "Tailwind", "TypeScript", "Supabase"],
+					"image": "/projects/hoopr.svg",
+					"time": "2025"
+				},
+				{
+					"title": "Apassul",
+					"href": "https://apassul.com.br/",
+					"description": "Associação dos Produtores de Sementes e Mudas do Rio Grande do Sul",
+					"labels": ["React", "Tailwind", "TypeScript", "Supabase"],
+					"image": "/projects/apassul.png",
+					"time": "2025"
+				},
+				{
+					"title": "Truss - TMO",
+					"href": "https://trussint.com/",
+					"description": "Mine one, calculates the performance of workers in mining operations, and provides insights to optimize the workforce and increase productivity.",
+					"labels": ["React", "Tailwind", "TypeScript", "Node.js", "MongoDB"],
+					"image": "/projects/mine-one.svg",
+					"time": "2025"
+				},
+				{
+					"title": "Psiuapp",
+					"href": "https://apps.apple.com/br/app/psiuapp/id6755193736",
+					"description": "PsiUapp transforms emotional education into a fun and interactive journey!\n\nWith the Emocionário, children record daily mood with exclusive emojis and learn to recognize their feelings.\n\nThe Journey of 13 Moments brings missions and gamified activities guided by Turminha da Glória, encouraging empathy, self-awareness, and emotional balance.",
+					"labels": [
+						"React",
+						"React Native",
+						"Tailwind",
+						"TypeScript",
+						"Supabase"
+					],
+					"image": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/90/8c/fa/908cfadd-9735-a9fb-d84f-20bd924320a4/1.3_-_Mobile_-__Onboarding_3.png/460x996bb.webp",
+					"aspectRatio": "8/18",
+					"time": "2025"
+				},
+				{
+					"title": "Xoice",
+					"href": "https://github.com/Johann-Goncalves-Pereira/xoice",
+					"description": "Love page: multilingual animated “I love you” phrases with script-aware typography.\n\nWordle page: a German word game with multi-board gameplay, suggestions, and score history.",
+					"labels": ["React", "Tailwind", "Zustand", "TypeScript"],
+					"image": "/projects/xoice.png",
+					"time": "2025"
+				},
 				{
 					"title": "Revex - Elm Boilerplate",
 					"href": "https://github.com/Johann-Goncalves-Pereira/Revex/",
 					"description": "Revex stands as an Elm boilerplate, replete with an abundance of functionalities. It seamlessly integrates the ease of Vite, the simplicity of Tailwind + Scss, and the powerful Router Elm-spa, offering a comprehensive toolkit for streamlined development.",
 					"labels": ["Vite", "Elm", "Elm-Spa", "Tailwind", "TypeScript"],
-					"image": "https://picsum.photos/200/300"
+					"image": "/projects/revex.png",
+					"time": "2022"
 				},
 				{
 					"title": "Mein Projekt",
 					"href": "https://github.com/Johann-Goncalves-Pereira/Mein-Projekt",
 					"description": "Embarking on an ambitious endeavor, this expansive project boasts a multitude of frontend pages meticulously tailored with Elm. Distinguished by their diverse themes and builds, these pages showcase a plethora of layouts, elevating the project's complexity and versatility.",
 					"labels": ["Sass", "Elm", "Postcss", "Themes"],
-					"image": "https://picsum.photos/220/300"
+					"image": "https://github.com/Johann-Goncalves-Pereira/Mein-Projekt/assets/62612685/44f4527d-5c50-42b9-9aa8-f1184869ae48",
+					"time": "2023"
 				},
 				{
 					"title": "Kelpie - Uphold",
 					"href": "https://github.com/Johann-Goncalves-Pereira/Kelpie",
 					"description": "Revex stands as an Elm boilerplate, replete with an abundance of functionalities. It seamlessly integrates the ease of Vite, the simplicity of Tailwind + Scss, and the powerful Router Elm-spa, offering a comprehensive toolkit for streamlined development.",
 					"labels": ["Elm", "Sass", "Tailwind", "TypeScript", "Webpack"],
-					"image": "https://picsum.photos/210/300"
+					"image": "https://imgur.com/1nebetR.gif",
+					"time": "2023"
+				},
+
+				{
+					"title": "Street Graffiti",
+					"href": "https://github.com/Johann-Goncalves-Pereira/street-graffiti",
+					"description": "Street Graffiti is a web application that allows users to explore and share graffiti art from around the world. Users can upload photos of graffiti they find, view a map of graffiti locations, and connect with other graffiti enthusiasts.",
+					"labels": ["React", "Tailwind", "TypeScript"],
+					"image": "https://github.com/Johann-Goncalves-Pereira/street-graffiti/assets/62612685/6490d7c9-1bcd-42a3-b26e-4cd645fc6f36",
+					"time": "2023"
+				},
+
+				{
+					"title": "NLW eSports",
+					"href": "https://github.com/Johann-Goncalves-Pereira/NLW-eSports",
+					"description": "Have you ever wanted to find someone to play the same game as you? Or someone on the same level? eSports allows a player to find their duo(partners).",
+					"labels": [
+						"React",
+						"React Native",
+						"Tailwind",
+						"TypeScript",
+						"Node.js",
+						"Prisma"
+					],
+					"image": "https://github.com/Johann-Goncalves-Pereira/NLW-eSports/assets/62612685/1da56b87-02a2-4556-96e7-d8a1e50f8f57",
+					"time": "2023"
+				},
+				{
+					"title": "The Great Outdoors",
+					"href": "https://github.com/Johann-Goncalves-Pereira/the-greate-outdoors",
+					"description": "Little beautiful site. This is just a simple static site.",
+					"labels": ["React", "Tailwind", "TypeScript"],
+					"image": "https://github.com/Johann-Goncalves-Pereira/the-greate-outdoors/assets/62612685/8297c2cd-d0b1-423d-9bce-5222f0e4f1a9",
+					"time": "2023"
 				}
 			],
 			"archiveLink": {
 				"title": "View Full Project Archive",
 				"href": "/archive"
 			}
-		},
-		"projects": {
-			"links": [
-				{
-					"title": "Project this is a long title, that is like a description in the and of the day",
-					"href": "/project-1",
-					"time": "2022"
-				},
-				{
-					"title": "Project this is a long title, that is like a description in the and of the day",
-					"href": "/project-2",
-					"time": "2022"
-				}
-			]
 		}
 	}
 }

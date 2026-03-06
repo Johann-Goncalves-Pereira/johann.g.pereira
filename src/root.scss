@@ -11,7 +11,7 @@
 
 :root {
 	@function hsl($h, $s, $l) {
-		@return unquote('#{$h} #{$s} #{$l}');
+		@return #{$h} #{$s} #{$l};
 	}
 
 	@mixin color-values($name, $h, $s, $l) {
@@ -77,6 +77,8 @@
 }
 
 :where(html) {
+	/* Enable smooth scrolling by default; overridden by prefers-reduced-motion below */
+	scroll-behavior: smooth;
 	font-size: 100%;
 	line-height: 1;
 
@@ -104,10 +106,6 @@
 	font-style: normal;
 	line-height: inherit;
 	font-optical-sizing: auto;
-	font-variation-settings:
-		'BNCE' 0,
-		'INFM' 0,
-		'SPAC' 0;
 }
 
 :where(img) {

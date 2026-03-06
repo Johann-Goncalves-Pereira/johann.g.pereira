@@ -20,7 +20,7 @@ export default {
 			},
 		},
 		fontFamily: {
-			comic: '"Shantell Sans", "Comic Sans MS", "Comic Sans", cursive',
+			comic: '"EB Garamond", Garamond, serif',
 		},
 		extend: {
 			gridTemplateColumns: {
