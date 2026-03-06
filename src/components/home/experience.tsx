@@ -48,7 +48,6 @@ export default component$(({ fnQRL }: ExperienceProps) => {
 					<Arrow />
 				</a>
 			</div>
-		
 		</nav>
 	)
 })

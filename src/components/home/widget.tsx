@@ -21,7 +21,7 @@ export default component$(
 
 		return (
 			<article
-				class='svg--45 relative isolate grid scale-105 gap-4 p-4 text-sm sm:scale-100 sm:grid-cols-[1fr_3fr] [&_a>span]:focus-within:opacity-100 [&_a>span]:hover:opacity-100 [&_p]:hover:text-surface-700'
+				class='svg--45 group relative isolate grid scale-105 gap-4 p-4 text-sm sm:scale-100 sm:grid-cols-[1fr_3fr] [&_a>span]:focus-within:opacity-100 [&_a>span]:hover:opacity-100 [&_p]:hover:text-surface-700'
 				aria-labelledby={titleToId}
 			>
 				<Wrapper
@@ -29,6 +29,7 @@ export default component$(
 					image={image}
 					title={title}
 					aspectRatio={aspectRatio}
+					href={href}
 				/>
 
 				<div class='grid flex-1 gap-2'>
@@ -46,7 +47,7 @@ export default component$(
 )
 
 export const Wrapper = component$(
-	({ date, image, title, aspectRatio }: WrapperProps) => {
+	({ date, image, title, aspectRatio, href }: WrapperProps) => {
 		const videoRatio = (x: number) => Math.floor((x * 9) / 16)
 		const imageStyle = {
 			aspectRatio: aspectRatio ?? `150/${videoRatio(150)}`,
@@ -58,7 +59,13 @@ export const Wrapper = component$(
 				) : date ? (
 					<i class='hidden sm:inline-block'>{date}</i>
 				) : (
-					<div class='mt-1 hidden h-fit w-fit rounded border-2 border-surface-900/75 sm:inline-block'>
+					<a
+						class='pointer-events-none z-50 mt-1 hidden h-fit  w-fit origin-bottom-right scale-100 transform-gpu rounded border-2 border-surface-900/75 transition-transform group-hover:scale-[3] sm:inline-block'
+						href={href ?? '#'}
+						target='_blank'
+						rel='noopener noreferrer'
+						aria-label={`${title} (opens in a new tab)`}
+					>
 						<img
 							class='rounded'
 							src={image}
@@ -67,7 +74,7 @@ export const Wrapper = component$(
 							alt={`Image for ${title}`}
 							style={imageStyle}
 						/>
-					</div>
+					</a>
 				)}
 			</>
 		)
@@ -122,6 +129,7 @@ interface WrapperProps {
 	image?: string
 	title: string
 	aspectRatio?: string
+	href?: string
 }
 
 interface HeaderProps {
