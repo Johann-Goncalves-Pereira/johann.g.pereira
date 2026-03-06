@@ -3,7 +3,16 @@ import { component$ } from '@builder.io/qwik'
 import Arrow from '~/components/Svg/arrow'
 
 export default component$(
-	({ date, image, href, title, description, stars, labels }: WidgetProps) => {
+	({
+		date,
+		image,
+		href,
+		title,
+		description,
+		stars,
+		labels,
+		aspectRatio,
+	}: WidgetProps) => {
 		const titleToId = title
 			.split(' ')
 			.join('-')
@@ -15,7 +24,12 @@ export default component$(
 				class='svg--45 relative isolate grid scale-105 gap-4 p-4 text-sm sm:scale-100 sm:grid-cols-[1fr_3fr] [&_a>span]:focus-within:opacity-100 [&_a>span]:hover:opacity-100 [&_p]:hover:text-surface-700'
 				aria-labelledby={titleToId}
 			>
-				<Wrapper date={date} image={image} title={title} />
+				<Wrapper
+					date={date}
+					image={image}
+					title={title}
+					aspectRatio={aspectRatio}
+				/>
 
 				<div class='grid flex-1 gap-2'>
 					<Header title={title} titleId={titleToId} href={href} />
@@ -31,39 +45,42 @@ export default component$(
 	},
 )
 
-export const Wrapper = component$(({ date, image, title }: WrapperProps) => {
-	const videoRatio = (x: number) => Math.floor((x * 9) / 16)
-	const imageStyle = {
-		aspectRatio: `150/${videoRatio(150)}`,
-	}
-	return (
-		<>
-			{(!!date && !!image) || (!date && !image) ? (
-				<span class='text-3xl font-black text-primary-700'>Error</span>
-			) : date ? (
-				<i class='hidden sm:inline-block'>{date}</i>
-			) : (
-				<div class='mt-1 hidden h-fit w-fit rounded border-2 border-surface-900/75 sm:inline-block'>
-					<img
-						class='rounded'
-						src={image}
-						width={150}
-						height={videoRatio(150)}
-						alt={`Image for ${title}`}
-						style={imageStyle}
-					/>
-				</div>
-			)}
-		</>
-	)
-})
+export const Wrapper = component$(
+	({ date, image, title, aspectRatio }: WrapperProps) => {
+		const videoRatio = (x: number) => Math.floor((x * 9) / 16)
+		const imageStyle = {
+			aspectRatio: aspectRatio ?? `150/${videoRatio(150)}`,
+		}
+		return (
+			<>
+				{(!!date && !!image) || (!date && !image) ? (
+					<span class='text-3xl font-black text-primary-700'>Error</span>
+				) : date ? (
+					<i class='hidden sm:inline-block'>{date}</i>
+				) : (
+					<div class='mt-1 hidden h-fit w-fit rounded border-2 border-surface-900/75 sm:inline-block'>
+						<img
+							class='rounded'
+							src={image}
+							width={150}
+							height={videoRatio(150)}
+							alt={`Image for ${title}`}
+							style={imageStyle}
+						/>
+					</div>
+				)}
+			</>
+		)
+	},
+)
 
 export const Header = component$(({ title, titleId, href }: HeaderProps) => (
 	<header>
 		<a
 			class='flex gap-4 rounded'
-			href={href}
+			href={href ?? '#'}
 			target='_blank'
+			rel='noopener noreferrer'
 			aria-label={`${title} (opens in a new tab)`}
 			id={titleId}
 		>
@@ -97,19 +114,20 @@ export const Footer = component$(({ stars, labels }: FooterProps) => (
 interface WidgetProps extends WrapperProps, FooterProps {
 	title: string
 	description: string
-	href: string
+	href?: string
 }
 
 interface WrapperProps {
 	date?: string
 	image?: string
 	title: string
+	aspectRatio?: string
 }
 
 interface HeaderProps {
 	title: string
 	titleId: string
-	href: string
+	href?: string
 }
 
 interface FooterProps {

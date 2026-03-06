@@ -20,7 +20,7 @@
 				}
 			]
 		},
-		"about": {
+		"experience": {
 			"articles": [
 				{
 					"title": "Senior Software Engineer At Materialize",
@@ -69,68 +69,93 @@
 				"href": "/johann.pdf"
 			}
 		},
-		"experience": {
+		"projects": {
 			"articles": [
 				{
 					"title": "Revex - Elm Boilerplate",
 					"href": "https://github.com/Johann-Goncalves-Pereira/Revex/",
 					"description": "Revex stands as an Elm boilerplate, replete with an abundance of functionalities. It seamlessly integrates the ease of Vite, the simplicity of Tailwind + Scss, and the powerful Router Elm-spa, offering a comprehensive toolkit for streamlined development.",
 					"labels": ["Vite", "Elm", "Elm-Spa", "Tailwind", "TypeScript"],
-					"image": "https://github.com/Johann-Goncalves-Pereira/Revex/assets/62612685/256b5955-dd4b-4f4d-8c4e-708ace75cb0b"
+					"image": "https://github.com/Johann-Goncalves-Pereira/Revex/assets/62612685/256b5955-dd4b-4f4d-8c4e-708ace75cb0b",
+					"time": "2022"
+				},
+				{
+					"title": "Dary",
+					"href": "https://github.com/Johann-Goncalves-Pereira/dary",
+					"description": "Your private, local-first daily habits diary.\n\nDary is designed to help you show up every day with as little friction as possible. Log your progress, record voice notes, and build streaks—all while keeping your data 100% private and on your device.",
+					"aspectRatio": "8/18",
+					"labels": [
+						"React Native",
+						"Expo",
+						"Zustand",
+						"Tailwind/Tailnative",
+						"TypeScript"
+					],
+					"image": "https://github.com/user-attachments/assets/42307132-1f20-40dc-a8c6-fab4f46d9596",
+					"time": "2026"
+				},
+				{
+					"title": "Xoice",
+					"href": "https://github.com/Johann-Goncalves-Pereira/xoice",
+					"description": "Love page: multilingual animated “I love you” phrases with script-aware typography.\n\nWordle page: a German word game with multi-board gameplay, suggestions, and score history.",
+					"labels": ["React", "Tailwind", "Zustand", "TypeScript"],
+					"image": "https://github.com/user-attachments/assets/da8d6369-08d3-4332-8f19-024911407dee",
+					"time": "2025"
 				},
 				{
 					"title": "Mein Projekt",
 					"href": "https://github.com/Johann-Goncalves-Pereira/Mein-Projekt",
 					"description": "Embarking on an ambitious endeavor, this expansive project boasts a multitude of frontend pages meticulously tailored with Elm. Distinguished by their diverse themes and builds, these pages showcase a plethora of layouts, elevating the project's complexity and versatility.",
 					"labels": ["Sass", "Elm", "Postcss", "Themes"],
-					"image": "https://github.com/Johann-Goncalves-Pereira/Mein-Projekt/assets/62612685/44f4527d-5c50-42b9-9aa8-f1184869ae48"
+					"image": "https://github.com/Johann-Goncalves-Pereira/Mein-Projekt/assets/62612685/44f4527d-5c50-42b9-9aa8-f1184869ae48",
+					"time": "2023"
 				},
 				{
 					"title": "Kelpie - Uphold",
 					"href": "https://github.com/Johann-Goncalves-Pereira/Kelpie",
 					"description": "Revex stands as an Elm boilerplate, replete with an abundance of functionalities. It seamlessly integrates the ease of Vite, the simplicity of Tailwind + Scss, and the powerful Router Elm-spa, offering a comprehensive toolkit for streamlined development.",
 					"labels": ["Elm", "Sass", "Tailwind", "TypeScript", "Webpack"],
-					"image": "https://imgur.com/1nebetR.gif"
+					"image": "https://imgur.com/1nebetR.gif",
+					"time": "2023"
+				},
+
+				{
+					"title": "Street Graffiti",
+					"href": "https://github.com/Johann-Goncalves-Pereira/street-graffiti",
+					"description": "Street Graffiti is a web application that allows users to explore and share graffiti art from around the world. Users can upload photos of graffiti they find, view a map of graffiti locations, and connect with other graffiti enthusiasts.",
+					"labels": ["React", "Tailwind", "TypeScript"],
+					"image": "https://github.com/Johann-Goncalves-Pereira/street-graffiti/assets/62612685/6490d7c9-1bcd-42a3-b26e-4cd645fc6f36",
+					"time": "2023"
+				},
+
+				{
+					"title": "NLW eSports",
+					"href": "https://github.com/Johann-Goncalves-Pereira/NLW-eSports",
+					"description": "Have you ever wanted to find someone to play the same game as you? Or someone on the same level? eSports allows a player to find their duo(partners).",
+					"labels": [
+						"React",
+						"React Native",
+						"Tailwind",
+						"TypeScript",
+						"Node.js",
+						"Prisma"
+					],
+					"image": "https://github.com/Johann-Goncalves-Pereira/NLW-eSports/assets/62612685/1da56b87-02a2-4556-96e7-d8a1e50f8f57",
+					"time": "2023"
+				},
+				{
+					"title": "The Great Outdoors",
+					"href": "https://github.com/Johann-Goncalves-Pereira/the-greate-outdoors",
+					"description": "Little beautiful site. This is just a simple static site.",
+					"labels": ["React", "Tailwind", "TypeScript"],
+					"image": "https://github.com/Johann-Goncalves-Pereira/the-greate-outdoors/assets/62612685/8297c2cd-d0b1-423d-9bce-5222f0e4f1a9",
+					"time": "2023"
 				}
 			],
 			"archiveLink": {
 				"title": "View Full Project Archive",
 				"href": "/archive"
 			}
-		},
-		"projects": {
-			"links": [
-				{
-					"title": "Dary",
-					"href": "https://github.com/Johann-Goncalves-Pereira/dary",
-					"time": "2022"
-				},
-				{
-					"title": "Xoice",
-					"href": "https://github.com/Johann-Goncalves-Pereira/xoice",
-					"time": "2022"
-				},
-				{
-					"title": "Street Graffiti",
-					"href": "https://github.com/Johann-Goncalves-Pereira/street-graffiti",
-					"time": "2022"
-				},
-				{
-					"title": "Revex",
-					"href": "https://github.com/Johann-Goncalves-Pereira/Revex",
-					"time": "2022"
-				},
-				{
-					"title": "NLW eSports",
-					"href": "https://github.com/Johann-Goncalves-Pereira/NLW-eSports",
-					"time": "2022"
-				},
-				{
-					"title": "The Great Outdoors",
-					"href": "https://github.com/Johann-Goncalves-Pereira/the-greate-outdoors",
-					"time": "2022"
-				}
-			]
 		}
 	}
 }

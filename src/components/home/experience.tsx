@@ -6,30 +6,50 @@ import Arrow from '../Svg/arrow'
 
 import data from '~/data.json'
 
+interface CompanyProps {
+	company: {
+		title: string
+		date: string
+		href?: string
+		description: string
+		labels: string[]
+	}[]
+}
+export const Companies = component$(({ company }: CompanyProps) => (
+	<nav class='mt-24 grid gap-8'>
+		{company.map(({ title, date, href, description, labels }, index) => (
+			<Widget
+				title={title}
+				date={date}
+				href={href}
+				description={description}
+				labels={labels}
+				key={index}
+			/>
+		))}
+	</nav>
+))
+
 export default component$(({ fnQRL }: ExperienceProps) => {
-	const { articles, archiveLink } = data.home.experience
+	const { articles, portfolioLink } = data.home.experience
+
 	return (
-		<aside id='experience' aria-label='experience' onQVisible$={fnQRL}>
-			<nav class='mt-24 grid gap-8'>
-				{articles.map(
-					({ image, href: url, title, description, labels }, index) => (
-						<Widget
-							image={image}
-							href={url}
-							title={title}
-							description={description}
-							labels={labels}
-							stars={Math.random()}
-							key={index}
-						/>
-					),
-				)}
-				<a class='svg--45 text-lg font-semibold' href={archiveLink.href}>
-					{archiveLink.title}
+		<nav id='experience' aria-label='experience' onQVisible$={fnQRL}>
+			<Companies company={articles} />
+
+			<div class='mt-12 grid text-lg font-semibold'>
+				<a
+					class='svg--45'
+					href={portfolioLink.href}
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					{portfolioLink.title}
 					<Arrow />
 				</a>
-			</nav>
-		</aside>
+			</div>
+		
+		</nav>
 	)
 })
 
