@@ -7,16 +7,36 @@
 			"navSections": ["about", "experience", "projects"],
 			"socials": [
 				{
-					"title": "GitHub",
-					"href": "https://github.com/Johann-Goncalves-Pereira"
+					"href": "mailto:johann.gp.work@pm.me",
+					"label": "Send email to johann.gp.work@pm.me",
+					"Icon": "AtSign"
 				},
 				{
-					"title": "Linkedin",
-					"href": "https://www.linkedin.com/in/johann-pereira-a798961b3/"
+					"href": "https://github.com/Johann-Goncalves-Pereira",
+					"label": "GitHub Profile",
+					"Icon": "GitHub"
 				},
 				{
-					"title": "Medium",
-					"href": "https://medium.com/@johann.gon.pereira"
+					"href": "https://medium.com/@johann.gon.pereira",
+					"label": "Medium Profile",
+					"Icon": "Medium"
+				},
+				{
+					"href": "https://www.instagram.com/johanngon_/",
+					"label": "Instagram Profile",
+					"Icon": "Instagram"
+				},
+
+				{
+					"href": "https://www.linkedin.com/in/johann-pereira-a798961b3/",
+					"label": "LinkedIn Profile",
+					"Icon": "LinkedIn"
+				},
+
+				{
+					"href": "https://www.upwork.com/freelancers/~011d31917fa3d87f28",
+					"label": "UpWork Profile",
+					"Icon": "UpWork"
 				}
 			]
 		},

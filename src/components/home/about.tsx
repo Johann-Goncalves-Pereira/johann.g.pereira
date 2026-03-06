@@ -1,10 +1,10 @@
 import type { JSX } from '@builder.io/qwik'
 import { component$ } from '@builder.io/qwik'
 
-import Description from './about/description.mdx'
-import { getAgeFromBirthYear, getYearsSinceYear } from '~/utils/date'
 import data from '~/data.json'
-import Arrow from '../Svg/arrow'
+import { getAgeFromBirthYear, getYearsSinceYear } from '~/utils/date'
+import Arrow from '../icons/Arrow'
+import Description from './about/description.mdx'
 
 const DescriptionWithProps = Description as (component: {
 	age: number

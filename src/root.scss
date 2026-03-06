@@ -77,6 +77,8 @@
 }
 
 :where(html) {
+	/* Enable smooth scrolling by default; overridden by prefers-reduced-motion below */
+	scroll-behavior: smooth;
 	font-size: 100%;
 	line-height: 1;
 
