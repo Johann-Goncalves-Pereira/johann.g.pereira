@@ -29,7 +29,7 @@ export default component$(() => {
 	const warmArchive$ = $(async () => warmArchiveRoute(archiveLink.href))
 
 	return (
-		<aside class='mt-24' id='projects'>
+		<aside class='' id='projects'>
 			<nav class='mt-24 flex flex-col-reverse gap-8'>
 				<a
 					class='svg--45 text-lg font-semibold'
