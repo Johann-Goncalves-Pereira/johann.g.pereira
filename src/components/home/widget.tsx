@@ -21,7 +21,7 @@ export default component$(
 
 		return (
 			<article
-				class='svg--45 group relative isolate grid scale-105 gap-4 p-4 text-sm hover:z-10  sm:scale-100 sm:grid-cols-[1fr_3fr] [&_a>span]:focus-within:opacity-100 [&_a>span]:hover:opacity-100 [&_p]:hover:text-surface-700'
+				class='svg--45 group relative isolate grid scale-105 gap-4 p-4 text-sm sm:scale-100 sm:grid-cols-[1fr_3fr] [&_a>span]:focus-within:opacity-100 [&_a>span]:hover:opacity-100 [&_p]:hover:text-surface-700'
 				aria-labelledby={titleToId}
 			>
 				<Wrapper
@@ -60,14 +60,14 @@ export const Wrapper = component$(
 					<i class='hidden sm:inline-block'>{date}</i>
 				) : (
 					<a
-						class='pointer-events-none z-50 mt-1 hidden h-fit  w-fit origin-top-right scale-100 transform-gpu rounded border-2 border-surface-900/75  transition-transform sm:inline-block lg:group-hover:scale-[3]'
+						class='pointer-events-none z-50  hidden h-fit w-fit  origin-top-right scale-100 transform-gpu overflow-clip rounded border-2 border-surface-900/75  transition-transform sm:inline-block lg:group-hover:scale-[3]'
 						href={href ?? '#'}
 						target='_blank'
 						rel='noopener noreferrer'
 						aria-label={`${title} (opens in a new tab)`}
 					>
 						<img
-							class='rounded object-cover'
+							class=' object-cover object-top'
 							src={image}
 							width={150}
 							height={videoRatio(150)}
@@ -104,7 +104,7 @@ export const Header = component$(({ title, titleId, href }: HeaderProps) => (
 
 export const Footer = component$(({ stars, labels }: FooterProps) => (
 	<footer>
-		{stars ? <i>start: {stars}</i> : null}
+		{stars ? <i>Start: {stars}</i> : null}
 		<ul class='mt-2 flex cursor-default flex-wrap gap-1 text-xs font-medium capitalize leading-5 text-primary-500 selection:hidden'>
 			{labels.map(label => (
 				<li

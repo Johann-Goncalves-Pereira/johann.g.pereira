@@ -30,24 +30,7 @@ export default component$(() => {
 
 	return (
 		<aside class='mt-24' id='projects'>
-			<nav class='mt-24 grid gap-8'>
-				{articles.map(
-					(
-						{ image, href: url, title, description, labels, time, aspectRatio },
-						index,
-					) => (
-						<Widget
-							image={image}
-							href={url}
-							title={title}
-							description={description}
-							labels={labels}
-							stars={Number(time)}
-							aspectRatio={aspectRatio}
-							key={index}
-						/>
-					),
-				)}
+			<nav class='mt-24 flex flex-col-reverse gap-8'>
 				<a
 					class='svg--45 text-lg font-semibold'
 					href={archiveLink.href}
@@ -57,6 +40,33 @@ export default component$(() => {
 					{archiveLink.title}
 					<Arrow />
 				</a>
+				{[...articles]
+					.reverse()
+					.map(
+						(
+							{
+								image,
+								href: url,
+								title,
+								description,
+								labels,
+								time,
+								aspectRatio,
+							},
+							index,
+						) => (
+							<Widget
+								image={image}
+								href={url}
+								title={title}
+								description={description}
+								labels={labels}
+								stars={Number(time)}
+								aspectRatio={aspectRatio}
+								key={index}
+							/>
+						),
+					)}
 			</nav>
 		</aside>
 	)

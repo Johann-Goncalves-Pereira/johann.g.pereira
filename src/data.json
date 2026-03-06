@@ -104,15 +104,6 @@
 		"projects": {
 			"articles": [
 				{
-					"title": "Hoopr",
-					"href": "https://hoopr.app/",
-					"description": "The Future of Basketball Recruitment\n\nConnect with verified professionals, discover talent instantly, and close deals faster than ever before.",
-					"labels": ["React", "Tailwind", "TypeScript", "Node.js", "MongoDB"],
-					"image": "/projects/hoopr.svg",
-					"time": "2025"
-				},
-
-				{
 					"title": "Dary",
 					"href": "https://github.com/Johann-Goncalves-Pereira/dary",
 					"description": "Your private, local-first daily habits diary.\n\nDary is designed to help you show up every day with as little friction as possible. Log your progress, record voice notes, and build streaks—all while keeping your data 100% private and on your device.",
@@ -128,11 +119,50 @@
 					"time": "2026"
 				},
 				{
+					"title": "Hoopr",
+					"href": "https://hoopr.app/",
+					"description": "The Future of Basketball Recruitment\n\nConnect with verified professionals, discover talent instantly, and close deals faster than ever before.",
+					"labels": ["React", "Tailwind", "TypeScript", "Supabase"],
+					"image": "/projects/hoopr.svg",
+					"time": "2025"
+				},
+				{
+					"title": "Apassul",
+					"href": "https://apassul.com.br/",
+					"description": "Associação dos Produtores de Sementes e Mudas do Rio Grande do Sul",
+					"labels": ["React", "Tailwind", "TypeScript", "Supabase"],
+					"image": "/projects/apassul.png",
+					"time": "2025"
+				},
+				{
+					"title": "Truss - TMO",
+					"href": "https://trussint.com/",
+					"description": "Mine one, calculates the performance of workers in mining operations, and provides insights to optimize the workforce and increase productivity.",
+					"labels": ["React", "Tailwind", "TypeScript", "Node.js", "MongoDB"],
+					"image": "/projects/mine-one.svg",
+					"time": "2025"
+				},
+				{
+					"title": "Psiuapp",
+					"href": "https://apps.apple.com/br/app/psiuapp/id6755193736",
+					"description": "PsiUapp transforms emotional education into a fun and interactive journey!\n\nWith the Emocionário, children record daily mood with exclusive emojis and learn to recognize their feelings.\n\nThe Journey of 13 Moments brings missions and gamified activities guided by Turminha da Glória, encouraging empathy, self-awareness, and emotional balance.",
+					"labels": [
+						"React",
+						"React Native",
+						"Tailwind",
+						"TypeScript",
+						"Supabase"
+					],
+					"image": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/90/8c/fa/908cfadd-9735-a9fb-d84f-20bd924320a4/1.3_-_Mobile_-__Onboarding_3.png/460x996bb.webp",
+					"aspectRatio": "8/18",
+					"time": "2025"
+				},
+				{
 					"title": "Xoice",
 					"href": "https://github.com/Johann-Goncalves-Pereira/xoice",
 					"description": "Love page: multilingual animated “I love you” phrases with script-aware typography.\n\nWordle page: a German word game with multi-board gameplay, suggestions, and score history.",
 					"labels": ["React", "Tailwind", "Zustand", "TypeScript"],
-					"image": "https://github.com/user-attachments/assets/da8d6369-08d3-4332-8f19-024911407dee",
+					"image": "/projects/xoice.png",
 					"time": "2025"
 				},
 				{
@@ -140,7 +170,7 @@
 					"href": "https://github.com/Johann-Goncalves-Pereira/Revex/",
 					"description": "Revex stands as an Elm boilerplate, replete with an abundance of functionalities. It seamlessly integrates the ease of Vite, the simplicity of Tailwind + Scss, and the powerful Router Elm-spa, offering a comprehensive toolkit for streamlined development.",
 					"labels": ["Vite", "Elm", "Elm-Spa", "Tailwind", "TypeScript"],
-					"image": "https://github.com/Johann-Goncalves-Pereira/Revex/assets/62612685/256b5955-dd4b-4f4d-8c4e-708ace75cb0b",
+					"image": "/projects/revex.png",
 					"time": "2022"
 				},
 				{
