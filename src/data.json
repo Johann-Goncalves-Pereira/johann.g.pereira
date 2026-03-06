@@ -47,7 +47,19 @@
 					"date": "2024 — Present",
 					"href": "https://www.materialize.pro/en_us.html",
 					"description": "I returned to Materialize as a Senior Software Engineer in a software factory environment.\n\nOver the past year, I’ve spearheaded critical projects for a diverse range of clients, including Hoop, Psiuapp, Truss, and Apassul.",
-					"labels": ["React", "Elm", "Scss", "Qwik", "Tailwind", "QA", "API"]
+					"labels": [
+						"React",
+						"React Native",
+						"TypeScript",
+						"Elm",
+						"Scss",
+						"Qwik",
+						"Tailwind",
+						"QA",
+						"API",
+						"MongoDB",
+						"Node.js"
+					]
 				},
 				{
 					"title": "Frontend Engineer At Reside",
@@ -68,7 +80,7 @@
 					"date": "2022 — 2023",
 					"href": "https://weon.com.br/",
 					"description": "I served as a Frontend Engineer. Improving the user experience of the platform, I implemented new features and resolved bugs. I also contributed to the development of a new design system for the company, which enhanced the consistency and efficiency of our development process.",
-					"labels": ["React", "CSS"]
+					"labels": ["Vue 2", "Vue 3", "TypeScript", "CSS"]
 				},
 				{
 					"title": "Maintainer Easy Synergy",
@@ -92,13 +104,14 @@
 		"projects": {
 			"articles": [
 				{
-					"title": "Revex - Elm Boilerplate",
-					"href": "https://github.com/Johann-Goncalves-Pereira/Revex/",
-					"description": "Revex stands as an Elm boilerplate, replete with an abundance of functionalities. It seamlessly integrates the ease of Vite, the simplicity of Tailwind + Scss, and the powerful Router Elm-spa, offering a comprehensive toolkit for streamlined development.",
-					"labels": ["Vite", "Elm", "Elm-Spa", "Tailwind", "TypeScript"],
-					"image": "https://github.com/Johann-Goncalves-Pereira/Revex/assets/62612685/256b5955-dd4b-4f4d-8c4e-708ace75cb0b",
-					"time": "2022"
+					"title": "Hoopr",
+					"href": "https://hoopr.app/",
+					"description": "The Future of Basketball Recruitment\n\nConnect with verified professionals, discover talent instantly, and close deals faster than ever before.",
+					"labels": ["React", "Tailwind", "TypeScript", "Node.js", "MongoDB"],
+					"image": "/projects/hoopr.svg",
+					"time": "2025"
 				},
+
 				{
 					"title": "Dary",
 					"href": "https://github.com/Johann-Goncalves-Pereira/dary",
@@ -121,6 +134,14 @@
 					"labels": ["React", "Tailwind", "Zustand", "TypeScript"],
 					"image": "https://github.com/user-attachments/assets/da8d6369-08d3-4332-8f19-024911407dee",
 					"time": "2025"
+				},
+				{
+					"title": "Revex - Elm Boilerplate",
+					"href": "https://github.com/Johann-Goncalves-Pereira/Revex/",
+					"description": "Revex stands as an Elm boilerplate, replete with an abundance of functionalities. It seamlessly integrates the ease of Vite, the simplicity of Tailwind + Scss, and the powerful Router Elm-spa, offering a comprehensive toolkit for streamlined development.",
+					"labels": ["Vite", "Elm", "Elm-Spa", "Tailwind", "TypeScript"],
+					"image": "https://github.com/Johann-Goncalves-Pereira/Revex/assets/62612685/256b5955-dd4b-4f4d-8c4e-708ace75cb0b",
+					"time": "2022"
 				},
 				{
 					"title": "Mein Projekt",
