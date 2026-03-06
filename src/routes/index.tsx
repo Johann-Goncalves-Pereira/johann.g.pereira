@@ -22,7 +22,7 @@ export default component$(() => {
 					if (entry.isIntersecting) currentSection.value = entry.target.id
 				})
 			},
-			{ rootMargin: '-96px' },
+			{ rootMargin: '0px' },
 		)
 		return observer
 	})
