@@ -60,7 +60,7 @@ export const Wrapper = component$(
 					<i class='hidden sm:inline-block'>{date}</i>
 				) : (
 					<a
-						class='pointer-events-none z-50 mt-1 hidden h-fit  w-fit origin-bottom-right scale-100 transform-gpu rounded border-2 border-surface-900/75 transition-transform group-hover:scale-[3] sm:inline-block'
+						class='pointer-events-none z-50 mt-1 hidden h-fit  w-fit origin-bottom-right scale-100 transform-gpu rounded border-2 border-surface-900/75 transition-transform sm:inline-block lg:group-hover:scale-[3]'
 						href={href ?? '#'}
 						target='_blank'
 						rel='noopener noreferrer'

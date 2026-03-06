@@ -2,8 +2,8 @@ import { component$, useStylesScoped$ } from '@builder.io/qwik'
 import { twMerge } from 'tailwind-merge'
 
 import { CodePen, GitHub, Medium } from '~/components/Svg/social'
-import styles from './header.scss?inline'
 import data from '~/data.json'
+import styles from './header.scss?inline'
 
 export default component$(({ section }: HeaderProps) => {
 	useStylesScoped$(styles)
@@ -11,7 +11,7 @@ export default component$(({ section }: HeaderProps) => {
 		data.home.header
 
 	return (
-		<header class=''>
+		<header class='-z-10'>
 			<Titles title={title} subtitle={subtitle} description={description} />
 			<NavSection section={section} sections={navSections} />
 			<Social socials={socials} />
